@@ -14,10 +14,6 @@ const routes: Routes = [
     redirectTo: '/inicio'
   },
   {
-    path:'cliente',
-    loadChildren: ()=> import('./modulos/cliente/cliente.module').then(m=>m.ClienteModule)
-  },
-  {
     path:'parametrizacion',
     loadChildren: ()=> import('./modulos/parametrizacion/parametrizacion.module').then(m=>m.ParametrizacionModule)
   },
@@ -34,8 +30,8 @@ const routes: Routes = [
     loadChildren: ()=> import('./modulos/usuario/usuario.module').then(m=>m.UsuarioModule)
   },
   {
-    path:'vendedor',
-    loadChildren: ()=> import('./modulos/vendedor/vendedor.module').then(m=>m.VendedorModule)
+    path:'ventas',
+    loadChildren: ()=> import('./modulos/ventas/ventas.module').then(m=>m.VentasModule)
   },
   {
     path: '**',
