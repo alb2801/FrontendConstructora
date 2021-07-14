@@ -19,7 +19,7 @@ export class IniciarSesionComponent implements OnInit {
     private router: Router) {
 
   }
-//
+
   ConstruirFormulario() {
     this.fgValidador = this.fb.group({
       usuario: ['alejandro.1701814107@ucaldas.edu.co', [Validators.required, Validators.email]],
