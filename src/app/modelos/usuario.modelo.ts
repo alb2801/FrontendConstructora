@@ -12,4 +12,5 @@ export class UsuarioModelo{
     Rol?: String;
     user?: UsuarioModule;
     tk?: String;
+    isLoggedIn: boolean = false;
 }

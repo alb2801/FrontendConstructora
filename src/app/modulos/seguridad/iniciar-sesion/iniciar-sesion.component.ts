@@ -46,9 +46,9 @@ export class IniciarSesionComponent implements OnInit {
       modelo.Correo = usuario;
       modelo.Contrasena = claveCifrada;
       this.servicioSeguridad.VerificarUsuario(modelo).subscribe(
-        (datos) => {
-          alert("Datos correctos");
-          console.log(datos);
+        (datos: UsuarioModelo) => {
+          this.servicioSeguridad.AlmacenarDatosSesionEnLocal(datos);
+          this.router.navigate(["/inicio"]);
         },
         (error) => {
           alert("Datos inválidos");
