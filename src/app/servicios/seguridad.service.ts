@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 //import { DatosGenerales } from '../config/datos.generales';
 import { UsuarioModelo } from '../modelos/usuario.modelo';
+import { DatosGenerales } from '../config/datos.generales';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SeguridadService {
-
+  url: String = DatosGenerales.url;
   datosDeSesion: BehaviorSubject<UsuarioModelo> = new BehaviorSubject<UsuarioModelo>(new UsuarioModelo());
 
   constructor(private http: HttpClient) {
@@ -26,7 +27,7 @@ export class SeguridadService {
 
   VerificarUsuario(modelo: UsuarioModelo): Observable<any> {
     return this.http.post<any>(
-      `http://localhost:3000/identificar-usuario`,
+      `${this.url}/identificar-usuario`,
       {
         nombre_usuario: modelo.Correo,
         clave: modelo.Contrasena
@@ -56,6 +57,21 @@ export class SeguridadService {
       usuarioModelo.isLoggedIn = true;
       this.RefrescarDatosSesion(usuarioModelo);
       return true;
+    }
+  }
+
+  RemoverLocalStorage(){
+    let datos = localStorage.removeItem("session-data");
+    this.RefrescarDatosSesion(new UsuarioModelo());
+  }
+
+  ObternerToken(){
+    let datos = localStorage.getItem("session-data");
+    if (datos) {
+      let obj: UsuarioModelo = JSON.parse(datos);
+      return obj.tk;
+    } else {
+      return "";
     }
   }
 
