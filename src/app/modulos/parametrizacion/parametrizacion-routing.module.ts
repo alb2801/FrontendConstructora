@@ -4,6 +4,8 @@ import { ListarBloqueComponent } from './bloque/listar-bloque/listar-bloque.comp
 import { ListarCiudadComponent } from './ciudad/listar-ciudad/listar-ciudad.component';
 import { ListarInmuebleComponent } from './inmueble/listar-inmueble/listar-inmueble.component';
 import { CrearPaisComponent } from './pais/crear-pais/crear-pais.component';
+import { EditarPaisComponent } from './pais/editar-pais/editar-pais.component';
+import { EliminarPaisComponent } from './pais/eliminar-pais/eliminar-pais.component';
 import { ListarPaisComponent } from './pais/listar-pais/listar-pais.component';
 import { ListarProyectoComponent } from './proyecto/listar-proyecto/listar-proyecto.component';
 
@@ -15,6 +17,14 @@ const routes: Routes = [
   {
     path: 'crear-paises',
     component: CrearPaisComponent
+  },
+  {
+    path: 'editar-paises/:id',
+    component: EditarPaisComponent
+  },
+  {
+    path: 'eliminar-paises/:id',
+    component: EliminarPaisComponent
   },
   {
     path: 'listar-ciudades',

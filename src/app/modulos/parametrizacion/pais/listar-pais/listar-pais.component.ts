@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatosGenerales } from 'src/app/config/datos.generales';
 import { PaiseService } from 'src/app/servicios/paise.service';
 import {PaisModelo} from '../../../../modelos/pais.modelo';
 
@@ -9,6 +10,7 @@ import {PaisModelo} from '../../../../modelos/pais.modelo';
 })
 export class ListarPaisComponent implements OnInit {
   pagina: number = 1;
+  regPorPagina: number = DatosGenerales.numRegistroPorPagina;
   listarRegistros: PaisModelo[] = [];
   constructor(private servivio: PaiseService) { }
 
