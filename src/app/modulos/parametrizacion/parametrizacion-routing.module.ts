@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListarBloqueComponent } from './bloque/listar-bloque/listar-bloque.component';
+import { CrearCiudadComponent } from './ciudad/crear-ciudad/crear-ciudad.component';
+import { EditarCiudadComponent } from './ciudad/editar-ciudad/editar-ciudad.component';
+import { EliminarCiudadComponent } from './ciudad/eliminar-ciudad/eliminar-ciudad.component';
 import { ListarCiudadComponent } from './ciudad/listar-ciudad/listar-ciudad.component';
 import { ListarInmuebleComponent } from './inmueble/listar-inmueble/listar-inmueble.component';
 import { CrearPaisComponent } from './pais/crear-pais/crear-pais.component';
@@ -29,6 +32,18 @@ const routes: Routes = [
   {
     path: 'listar-ciudades',
     component: ListarCiudadComponent
+  },
+  {
+    path: 'crear-ciudades',
+    component: CrearCiudadComponent
+  },
+  {
+    path: 'editar-ciudades/:id',
+    component: EditarCiudadComponent
+  },
+  {
+    path: 'eliminar-ciudades/:id',
+    component: EliminarCiudadComponent
   },
   {
     path: 'listar-proyectos',

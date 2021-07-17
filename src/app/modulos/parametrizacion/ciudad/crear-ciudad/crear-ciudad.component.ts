@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
+import { CiudadService } from 'src/app/servicios/ciudad.service';
 
 @Component({
   selector: 'app-crear-ciudad',
@@ -7,9 +11,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrearCiudadComponent implements OnInit {
 
-  constructor() { }
+  fgValidador: FormGroup = new FormGroup({});
+
+  constructor(private fb: FormBuilder,
+    private servicio: CiudadService,
+    private router: Router) {
+
+  }
+
+  ConstruirFormulario() {
+    this.fgValidador = this.fb.group({
+      nombre: ['', [Validators.required]]
+    });
+  }
 
   ngOnInit(): void {
+    this.ConstruirFormulario();
+  }
+
+  get ObtenerFgValidator(){
+    return this.fgValidador.controls;
+  }
+  GuardarRegistro(){
+    let nom = this.ObtenerFgValidator.nombre.value;
+    let modelo: CiudadModelo = new CiudadModelo();
+    modelo.Nombre = nom;
+    this.servicio.AlmacenarRegistro(modelo).subscribe(
+      (datos) => {
+        alert("Registro almacenado correctamente");
+        this.router.navigate(["/parametrizacion/listar-ciudades"])
+      },
+      (err) => {
+        alert("Error almacenando el registro");
+      }
+    )
   }
 
 }
