@@ -1,19 +1,25 @@
 <nav>
-    <div class="nav-wrapper">
-      <a routerLink="/" class="brand-logo">Logo</a>
+    <div class="nav-wrapper blue ">
+      <a routerLink="/" class="brand-logo"><img src="../../../../assets/imagenes/logo.jpg" height="64" width="180"></a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a routerLink="seguridad/iniciar-sesion">Iniciar Sesion</a></li>
+        <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-paises">Paises</a></li>
+        <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-ciudades">Ciudades</a></li>
+        <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-proyectos">Proyectos</a></li>
+        <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-bloques">Bloques</a></li>
+        <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-inmuebles">Inmuebles</a></li>
+        <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
+        <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesion</a></li>
       </ul>
     </div>
   </nav>
 
   <ul class="sidenav" id="mobile-demo">
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">Javascript</a></li>
-    <li><a routerLink="seguridad/iniciar-sesion">Iniciar Sesion</a></li>
+    <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-paises">Paises</a></li>
+    <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-ciudades">Ciudades</a></li>
+    <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-proyectos">Proyectos</a></li>
+    <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-bloques">Bloques</a></li>
+    <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-inmuebles">Inmuebles</a></li>
+    <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
+    <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesion</a></li>
   </ul>

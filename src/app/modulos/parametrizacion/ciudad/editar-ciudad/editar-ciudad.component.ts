@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
+import { CiudadService } from 'src/app/servicios/ciudad.service';
 
 @Component({
   selector: 'app-editar-ciudad',
@@ -7,9 +11,59 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditarCiudadComponent implements OnInit {
 
-  constructor() { }
+  fgValidador: FormGroup = new FormGroup({});
+
+  constructor(private fb: FormBuilder,
+    private servicio: CiudadService,
+    private router: Router,
+    private route: ActivatedRoute) {
+
+  }
+
+  ConstruirFormulario() {
+    this.fgValidador = this.fb.group({
+      id: ['', [Validators.required]],
+      nombre: ['', [Validators.required]]
+    });
+  }
 
   ngOnInit(): void {
+    this.ConstruirFormulario();
+    let id = this.route.snapshot.params["id"];
+    this.ObtenerRegistroPorId(id);
+  }
+
+  ObtenerRegistroPorId(id: number){
+    this.servicio.BuscarRegistros(id).subscribe(
+      (datos) => {
+        this.ObtenerFgValidator.id.setValue(datos.Id_ciudad);
+        this.ObtenerFgValidator.nombre.setValue(datos.Nombre);
+      },
+      (err) => {
+        alert("No se encuentra el registro con id: " + id);
+      }
+    );
+  }
+
+  get ObtenerFgValidator(){
+    return this.fgValidador.controls;
+  }
+  ModificarRegistro(){
+    let nom = this.ObtenerFgValidator.nombre.value;
+    let id = this.ObtenerFgValidator.id.value;
+    let modelo: CiudadModelo = new CiudadModelo();
+    modelo.Id_ciudad = id;
+    modelo.Nombre = nom;
+    this.servicio.ModificarRegistro(modelo).subscribe(
+      (datos) => {
+        alert("Registro modificado correctamente");
+        this.router.navigate(["/parametrizacion/listar-ciudades"])
+      },
+      (err) => {
+        alert("Error modificando el registro");
+      }
+    )
   }
 
 }
+
