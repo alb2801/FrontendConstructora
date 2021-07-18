@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ValidadorSesionGuard } from 'src/app/guardianes/validador-sesion.guard';
 import { ListarBloqueComponent } from './bloque/listar-bloque/listar-bloque.component';
 import { CrearCiudadComponent } from './ciudad/crear-ciudad/crear-ciudad.component';
 import { EditarCiudadComponent } from './ciudad/editar-ciudad/editar-ciudad.component';
@@ -15,47 +16,58 @@ import { ListarProyectoComponent } from './proyecto/listar-proyecto/listar-proye
 const routes: Routes = [
   {
     path: 'listar-paises',
-    component: ListarPaisComponent
+    component: ListarPaisComponent,
+    canActivate: [ValidadorSesionGuard]
   },
   {
     path: 'crear-paises',
-    component: CrearPaisComponent
+    component: CrearPaisComponent,
+    canActivate: [ValidadorSesionGuard]
   },
   {
     path: 'editar-paises/:id',
-    component: EditarPaisComponent
+    component: EditarPaisComponent,
+    canActivate: [ValidadorSesionGuard]
   },
   {
     path: 'eliminar-paises/:id',
-    component: EliminarPaisComponent
+    component: EliminarPaisComponent,
+    canActivate: [ValidadorSesionGuard]
   },
   {
     path: 'listar-ciudades',
-    component: ListarCiudadComponent
+    component: ListarCiudadComponent,
+    canActivate: [ValidadorSesionGuard]
   },
   {
     path: 'crear-ciudades',
-    component: CrearCiudadComponent
+    component: CrearCiudadComponent,
+    canActivate: [ValidadorSesionGuard]
   },
   {
     path: 'editar-ciudades/:id',
-    component: EditarCiudadComponent
+    component: EditarCiudadComponent,
+    canActivate: [ValidadorSesionGuard]
   },
   {
     path: 'eliminar-ciudades/:id',
-    component: EliminarCiudadComponent
+    component: EliminarCiudadComponent,
+    canActivate: [ValidadorSesionGuard]
   },
   {
     path: 'listar-proyectos',
-    component: ListarProyectoComponent
+    component: ListarProyectoComponent,
+    canActivate: [ValidadorSesionGuard]
   },
   {
     path: 'listar-bloques',
-    component: ListarBloqueComponent
+    component: ListarBloqueComponent,
+    canActivate: [ValidadorSesionGuard]
   },
   {
     path: 'listar-inmuebles',
-    component: ListarInmuebleComponent
+    component: ListarInmuebleComponent,
+    canActivate: [ValidadorSesionGuard]
   }
 ];
 
