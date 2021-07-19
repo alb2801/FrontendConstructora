@@ -27,9 +27,10 @@ export class CiudadService {
 
   AlmacenarRegistro(modelo: CiudadModelo): Observable<CiudadModelo> {
     return this.http.post<CiudadModelo>(
-      `${this.url}ciudades`,
+      `${this.url}/ciudades`,
       {
         Nombre: modelo.Nombre,
+        pais: modelo.pais
       },
       {
         headers: new HttpHeaders({
@@ -40,9 +41,10 @@ export class CiudadService {
 
   ModificarRegistro(modelo: CiudadModelo): Observable<CiudadModelo> {
     return this.http.put<CiudadModelo>(
-      `${this.url}ciudades/${modelo.Id_ciudad}`,
+      `${this.url}/ciudades/${modelo.Id_ciudad}`,
       {
         Nombre: modelo.Nombre,
+        pais: modelo.pais
       },
       {
         headers: new HttpHeaders({
@@ -51,9 +53,10 @@ export class CiudadService {
       });
   }
 
-  EliminarRegistro(id: number): Observable<CiudadModelo> {
+  EliminarRegistro(Id: number): Observable<CiudadModelo> {
+    console.log(Id)
     return this.http.delete<CiudadModelo>(
-      `${this.url}ciudades/${id}`,
+      `${this.url}/ciudades/${Id}`,
       {
         headers: new HttpHeaders({
           "Authorization":`Bearer ${this.token}`

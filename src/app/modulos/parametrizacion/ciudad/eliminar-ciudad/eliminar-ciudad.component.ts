@@ -28,6 +28,7 @@ export class EliminarCiudadComponent implements OnInit {
   ObtenerRegistroPorId(id: number){
     this.servicio.BuscarRegistros(id).subscribe(
       (datos) => {
+        console.log(datos.Id_ciudad +"  "+ datos.Nombre)
         if (datos.Id_ciudad && datos.Nombre){
         this.listaDatos.push(datos.Id_ciudad?.toString());
         this.listaDatos.push(datos.Nombre);
@@ -43,6 +44,7 @@ export class EliminarCiudadComponent implements OnInit {
 
   EliminarRegistro(){
     let id = this.id;
+    console.log(id)
     this.servicio.EliminarRegistro(id).subscribe(
       (datos) => {
         alert("Registro eliminado correctamente");
