@@ -44,7 +44,6 @@ export class EliminarCiudadComponent implements OnInit {
 
   EliminarRegistro(){
     let id = this.id;
-    console.log(id)
     this.servicio.EliminarRegistro(id).subscribe(
       (datos) => {
         alert("Registro eliminado correctamente");
