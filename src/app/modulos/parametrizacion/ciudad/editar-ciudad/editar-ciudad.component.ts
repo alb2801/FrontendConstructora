@@ -23,7 +23,8 @@ export class EditarCiudadComponent implements OnInit {
   ConstruirFormulario() {
     this.fgValidador = this.fb.group({
       id: ['', [Validators.required]],
-      nombre: ['', [Validators.required]]
+      nombre: ['', [Validators.required]],
+      pais: ['', [Validators.required]]
     });
   }
 
@@ -38,6 +39,7 @@ export class EditarCiudadComponent implements OnInit {
       (datos) => {
         this.ObtenerFgValidator.id.setValue(datos.Id_ciudad);
         this.ObtenerFgValidator.nombre.setValue(datos.Nombre);
+        this.ObtenerFgValidator.pais.setValue(datos.pais);
       },
       (err) => {
         alert("No se encuentra el registro con id: " + id);
@@ -51,9 +53,11 @@ export class EditarCiudadComponent implements OnInit {
   ModificarRegistro(){
     let nom = this.ObtenerFgValidator.nombre.value;
     let id = this.ObtenerFgValidator.id.value;
+    let ps = this.ObtenerFgValidator.pais.value;
     let modelo: CiudadModelo = new CiudadModelo();
     modelo.Id_ciudad = id;
     modelo.Nombre = nom;
+    modelo.pais= ps;
     this.servicio.ModificarRegistro(modelo).subscribe(
       (datos) => {
         alert("Registro modificado correctamente");

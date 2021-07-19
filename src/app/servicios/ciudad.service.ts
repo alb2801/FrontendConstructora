@@ -22,7 +22,7 @@ export class CiudadService {
   }
 
   BuscarRegistros(Id: number): Observable<CiudadModelo>{
-    return this.http.get<CiudadModelo>(`${this.url}ciudades/${Id}`);
+    return this.http.get<CiudadModelo>(`${this.url}/ciudades/${Id}`);
   }
 
   AlmacenarRegistro(modelo: CiudadModelo): Observable<CiudadModelo> {
