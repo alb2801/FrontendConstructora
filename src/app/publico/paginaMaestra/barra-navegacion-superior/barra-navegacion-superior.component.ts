@@ -13,6 +13,7 @@ export class BarraNavegacionSuperiorComponent implements OnInit {
 
   isLoggedIn: boolean = false;
   isAdmin: boolean = false;
+  nombreCompleto: String ='';
 
   constructor(private servicioSeguridad: SeguridadService) { }
 
@@ -23,14 +24,12 @@ export class BarraNavegacionSuperiorComponent implements OnInit {
     this.suscripcion = this.servicioSeguridad.ObtenerDatosSesion().subscribe(
       (datos) => {
         this.isLoggedIn = datos.isLoggedIn;
-        //this.isAdmin= datos
-        
-        
-        console.log(datos)
-        console.log(datos.Rol)
-        console.log(datos.Nombre)
-        console.log(datos.Apellido)
-        console.log(datos.tk)
+        if(datos.Rol=='administrador'){
+          this.isAdmin=true;
+        }else{
+          this.isAdmin=false;
+        }
+        this.nombreCompleto = datos.Nombre +" "+datos.Apellido;
       },
       (error) => {
 
