@@ -12,14 +12,14 @@ export class ListarPaisComponent implements OnInit {
   pagina: number = 1;
   regPorPagina: number = DatosGenerales.numRegistroPorPagina;
   listarRegistros: PaisModelo[] = [];
-  constructor(private servivio: PaiseService) { }
+  constructor(private servicio: PaiseService) { }
 
   ngOnInit(): void {
     this.ObtenerListadoPaises();
   }
 
   ObtenerListadoPaises(){
-    this.servivio.ListarRegistros().subscribe(
+    this.servicio.ListarRegistros().subscribe(
       (datos) => {
         this.listarRegistros = datos;
       },

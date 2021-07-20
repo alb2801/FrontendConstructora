@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
+import { PaisModelo } from 'src/app/modelos/pais.modelo';
 import { CiudadService } from 'src/app/servicios/ciudad.service';
+import { PaiseService } from 'src/app/servicios/paise.service';
 
 @Component({
   selector: 'app-editar-ciudad',
@@ -12,9 +14,11 @@ import { CiudadService } from 'src/app/servicios/ciudad.service';
 export class EditarCiudadComponent implements OnInit {
 
   fgValidador: FormGroup = new FormGroup({});
+  listaPaises: PaisModelo[] = [];
 
   constructor(private fb: FormBuilder,
     private servicio: CiudadService,
+    private PaiseServicio: PaiseService,
     private router: Router,
     private route: ActivatedRoute) {
 
@@ -31,7 +35,19 @@ export class EditarCiudadComponent implements OnInit {
   ngOnInit(): void {
     this.ConstruirFormulario();
     let id = this.route.snapshot.params["id"];
+    this.CargarPaises();
     this.ObtenerRegistroPorId(id);
+  }
+
+  CargarPaises(){
+    this.PaiseServicio.ListarRegistros().subscribe(
+      (datos) =>{
+        this.listaPaises = datos;
+      },
+      (erro) =>{
+        alert("error cargando los deptos")
+      }
+    );
   }
 
   ObtenerRegistroPorId(id: number){

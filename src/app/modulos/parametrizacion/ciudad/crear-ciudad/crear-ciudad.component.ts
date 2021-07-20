@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
+import { PaisModelo } from 'src/app/modelos/pais.modelo';
 import { CiudadService } from 'src/app/servicios/ciudad.service';
+import { PaiseService } from 'src/app/servicios/paise.service';
 
 @Component({
   selector: 'app-crear-ciudad',
@@ -12,12 +14,12 @@ import { CiudadService } from 'src/app/servicios/ciudad.service';
 export class CrearCiudadComponent implements OnInit {
 
   fgValidador: FormGroup = new FormGroup({});
+  listaPaises: PaisModelo[] = [];
 
   constructor(private fb: FormBuilder,
     private servicio: CiudadService,
-    private router: Router) {
-
-  }
+    private PaiseServicio: PaiseService,
+    private router: Router) { }
 
   ConstruirFormulario() {
     this.fgValidador = this.fb.group({
@@ -28,6 +30,14 @@ export class CrearCiudadComponent implements OnInit {
 
   ngOnInit(): void {
     this.ConstruirFormulario();
+    this.PaiseServicio.ListarRegistros().subscribe(
+      (datos) =>{
+        this.listaPaises = datos;
+      },
+      (erro) =>{
+        alert("error cargando los deptos")
+      }
+    );
   }
 
   get ObtenerFgValidator(){
