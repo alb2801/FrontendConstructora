@@ -19,7 +19,7 @@ const routes: Routes = [
     canActivate: [ValidadorSesionGuard]
   },
   {
-    path: 'resetear-clave',
+    path: 'rest-password',
     component: ResetearClaveComponent,
     canActivate: [ValidadorNoSesionGuard]
   },
