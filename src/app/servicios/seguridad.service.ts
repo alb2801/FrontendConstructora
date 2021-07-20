@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 //import { DatosGenerales } from '../config/datos.generales';
 import { UsuarioModelo } from '../modelos/usuario.modelo';
 import { DatosGenerales } from '../config/datos.generales';
+import { ResetPassModelo } from '../modelos/resetear-contraseña.modelo';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,21 @@ export class SeguridadService {
       {
         nombre_usuario: modelo.Correo,
         clave: modelo.Contrasena
+      },
+      {
+        headers: new HttpHeaders({
+
+        })
+      });
+  }
+
+  ResetearContraseña(modelo : ResetPassModelo): Observable<any>{
+    console.log(modelo.Correo)
+    return this.http.post<any>(
+      `${this.url}/rest-password`,
+      
+      {
+        correo: modelo.Correo
       },
       {
         headers: new HttpHeaders({
