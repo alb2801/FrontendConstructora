@@ -10,7 +10,7 @@ export class UsuarioModelo{
     Ciudad?: String;
     Contrasena?: String;
     Rol?: String;
-    user?: UsuarioModule;
+    user: UsuarioModule = new UsuarioModule;
     tk?: String;
     isLoggedIn: boolean = false;
 }
