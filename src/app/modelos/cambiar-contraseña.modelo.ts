@@ -1,5 +1,5 @@
 export class cambiarClaveModelo{
-    Id_usuario?: String;
+    Correo?: String;
     Contraseña?: String;
     ContraseñaNueva?: String;
 }

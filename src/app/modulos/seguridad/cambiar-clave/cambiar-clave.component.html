@@ -25,29 +25,38 @@
 
                     <div class='row'>
                         <div class='input-field col s12'><i class="material-icons prefix">password</i>
-                            <input formControlName="contrasenaActual" class='validate' type='text' name='Actual' id='Actual' />
-                            <label class="active" for='Actual'>Ingrese su contraseña actual</label>
-                        </div>
+                            <input formControlName="ContrasenaActual" class='validate' type='text' name='Actual' id='Actual' />
+                            <label class="active" for='Actual'>Contraseña actual</label>
+                            <div *ngIf="ObtenerFgvalidador.ContrasenaActual.errors && (ObtenerFgvalidador.ContrasenaActual.dirty || ObtenerFgvalidador.ContrasenaActual.touched)" class="mensajesValidaciones">
+                              <strong *ngIf="ObtenerFgvalidador.ContrasenaActual.errors.required">Este campo es requerido</strong>
+                              <strong *ngIf="ObtenerFgvalidador.ContrasenaActual.errors.min">Debe tener mínimo 3 caracteres</strong>
+                            </div>
+                          </div>
                     </div>
 
                     <div class='row'>
                         <div class='input-field col s12'><i class="material-icons prefix">update</i>
-                            <input formControlName="contrasenaNueva" class='validate' type='text' name='Nueva' id='Nueva' />
-                            <label class="active" for='Nueva'>Ingrese su nueva contraseña</label>
+                            <input formControlName="ContrasenaNueva" class='validate' type='text' name='Nueva'
+                                id='Nueva' />
+                            <label class="active" for='Nueva'>Contraseña nueva</label>
+                        </div>
+                        <div *ngIf="ObtenerFgvalidador.ContrasenaNueva.errors && (ObtenerFgvalidador.ContrasenaNueva.dirty || ObtenerFgvalidador.ContrasenaNueva.touched)"
+                            class="mensajesValidaciones">
+                            <strong *ngIf="ObtenerFgvalidador.ContrasenaNueva.errors.required">Este campo es requerido</strong>
+                            <strong *ngIf="ObtenerFgvalidador.ContrasenaNueva.errors.min">Debe tener mínimo 3 caracteres</strong>
                         </div>
                     </div>
-                    
+
                     <br />
 
                     <div class='row'>
-                        <button 
-                            type='button' name='action' (click)="CambiarClave()"
+                        <button type='button' name='action' (click)="CambiarClave()"
                             class='col s12 btn btn-large waves-effect green'>
                             <i class="material-icons left">done</i> Aceptar</button>
                     </div>
                     <div class='row'>
                         <button class="col s12 btn btn-large waves-effect red" routerLink="/inicio"><i
-                            class="material-icons left">cancel</i>Cancelar</button>
+                                class="material-icons left">cancel</i>Cancelar</button>
                     </div>
 
                 </form>

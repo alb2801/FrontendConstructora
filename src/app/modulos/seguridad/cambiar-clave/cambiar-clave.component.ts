@@ -22,8 +22,8 @@ export class CambiarClaveComponent implements OnInit {
 
   ConstruirFormulario() {
     this.fgValidador = this.fb.group({
-      contraseñaActual: ['', [Validators.required]],
-      contraseñaNueva: ['', [Validators.required]]
+      ContrasenaActual: ['', [Validators.required, Validators.min(3)]],
+      ContrasenaNueva: ['', [Validators.required, Validators.min(3)]]
     });
   }
 
@@ -39,15 +39,16 @@ export class CambiarClaveComponent implements OnInit {
     if (this.fgValidador.invalid) {
       alert("Formulario inválido")
     } else {
-      let usuario = this.ObtenerFgvalidador.usuario.value;
+      let Contrasena = this.ObtenerFgvalidador.ContrasenaActual?.value;
+      let ContrasenaNueva = this.ObtenerFgvalidador.ContrasenaNueva?.value;
 
       let modelo = new cambiarClaveModelo();
-      modelo.Id_usuario = this.servicioSeguridad.UsuarioId();
-      modelo.Contraseña = crypto.MD5(this.ObtenerFgvalidador.contraseñaActual?.value).toString();
-      modelo.ContraseñaNueva = this.ObtenerFgvalidador.contraseñaNueva?.value;
+      modelo.Correo = this.servicioSeguridad.Username();
+      modelo.Contraseña = crypto.MD5(Contrasena).toString();
+      modelo.ContraseñaNueva = ContrasenaNueva;
       this.servicioSeguridad.CambiarContraseña(modelo).subscribe(
         (datos) => {
-          alert("Contraseña cambiada, verifique en su numero de telefono asociado a la cuenta la nueva contraseña")
+          alert("Contraseña cambiada")
           this.router.navigate(["/seguridad/iniciar-sesion"]);
         },
         (error) => {

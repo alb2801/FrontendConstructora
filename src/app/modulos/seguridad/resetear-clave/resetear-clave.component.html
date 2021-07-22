@@ -40,7 +40,7 @@
                     <br />
 
                     <div class='row'>
-                        <button [disabled]="ObtenerFgvalidador.clave.errors || ObtenerFgvalidador.usuario.errors"
+                        <button [disabled]="ObtenerFgvalidador.clave?.errors || ObtenerFgvalidador.usuario?.errors"
                             type='button' name='action' (click)="ResetearClave()"
                             class='col s12 btn btn-large waves-effect green'>
                             <i class="material-icons left">done</i> Aceptar</button>
