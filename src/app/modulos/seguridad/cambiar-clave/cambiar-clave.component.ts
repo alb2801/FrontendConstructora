@@ -43,7 +43,7 @@ export class CambiarClaveComponent implements OnInit {
       let ContrasenaNueva = this.ObtenerFgvalidador.ContrasenaNueva?.value;
 
       let modelo = new cambiarClaveModelo();
-      modelo.Correo = this.servicioSeguridad.Username();
+      modelo.Id_usuario = this.servicioSeguridad.UsuarioId();
       modelo.Contraseña = crypto.MD5(Contrasena).toString();
       modelo.ContraseñaNueva = ContrasenaNueva;
       this.servicioSeguridad.CambiarContraseña(modelo).subscribe(

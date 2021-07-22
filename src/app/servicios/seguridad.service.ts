@@ -58,14 +58,14 @@ export class SeguridadService {
   }
 
   CambiarContraseña(modelo : cambiarClaveModelo): Observable<any>{
-    console.log(modelo.Correo)
+    console.log(modelo.Id_usuario)
     console.log(modelo.Contraseña)
     console.log(modelo.ContraseñaNueva)
     return this.http.post<any>(
       `${this.url}/cambiar-clave`,
       
       {
-        Correo: modelo.Correo,
+        Id_usuario: modelo.Id_usuario,
         Contraseña: modelo.Contraseña,
         ContraseñaNueva: modelo.ContraseñaNueva
       },
@@ -117,16 +117,6 @@ export class SeguridadService {
     if (datos) {
       let obj: UsuarioModelo = JSON.parse(datos);
       return obj.Id_usuario;
-    } else {
-      return "";
-    }
-  }
-
-  Username(){
-    let datos = localStorage.getItem("session-data");
-    if (datos) {
-      let obj: UsuarioModelo = JSON.parse(datos);
-      return obj.Correo;
     } else {
       return "";
     }
