@@ -85,6 +85,7 @@ export class SeguridadService {
     let datos = localStorage.getItem("session-data");
     if (datos) {
       let obj: UsuarioModelo = JSON.parse(datos);
+      console.log(obj.tk)
       return obj.tk;
     } else {
       return "";
