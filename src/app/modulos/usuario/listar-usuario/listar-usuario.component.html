@@ -1,1 +1,49 @@
-<p>listar-usuario works!</p>
+<br>
+<a class="waves-effect waves-light btn" routerLink="/usuario/crear-usuario"><i class="material-icons left">add</i>Agregar</a>
+
+<table class="table responsive-table">
+    <thead>
+      <tr>
+          <th>Documento</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Ciudad</th>
+          <th>Rol</th>
+          <th>Correo</th>
+          <th>Celular</th>
+          <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let r of listarRegistros">
+            <th>
+                {{r.Documento}}
+            </th>
+            <th>
+                {{r.Nombre}}
+            </th>
+            <th>
+                {{r.Apellido}}
+            </th>
+            <th>
+                {{r.Ciudad}}
+            </th>
+            <th>
+                {{r.Rol}}
+            </th>
+            <th>
+                {{r.Correo}}
+            </th>
+            <th>
+                {{r.Celular}}
+            </th>
+            <th>
+                <a class="waves-effect orange waves-light btn" routerLink="/usuario/editar-usuario/{{r.Id_usuario}}"><i class="material-icons left">edit</i>Modificar</a>
+                &nbsp;&nbsp;
+                <a class="waves-effect red waves-light btn" routerLink="/usuario/eliminar-usuario/{{r.Id_usuario}}"><i class="material-icons left">delete</i>Eliminar</a>
+
+            </th>
+      </tr>
+    </tbody>
+  </table>

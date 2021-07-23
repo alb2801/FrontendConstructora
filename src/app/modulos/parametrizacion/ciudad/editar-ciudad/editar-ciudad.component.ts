@@ -6,6 +6,8 @@ import { PaisModelo } from 'src/app/modelos/pais.modelo';
 import { CiudadService } from 'src/app/servicios/ciudad.service';
 import { PaiseService } from 'src/app/servicios/paise.service';
 
+declare var IniciarSelect: any;
+
 @Component({
   selector: 'app-editar-ciudad',
   templateUrl: './editar-ciudad.component.html',
@@ -43,6 +45,10 @@ export class EditarCiudadComponent implements OnInit {
     this.PaiseServicio.ListarRegistros().subscribe(
       (datos) =>{
         this.listaPaises = datos;
+        this.listaPaises = datos;
+        setTimeout(() => {
+          IniciarSelect();
+        }, 500);
       },
       (erro) =>{
         alert("error cargando los deptos")
@@ -73,7 +79,7 @@ export class EditarCiudadComponent implements OnInit {
     let modelo: CiudadModelo = new CiudadModelo();
     modelo.Id_ciudad = id;
     modelo.Nombre = nom;
-    modelo.pais= ps;
+    modelo.pais= parseInt(ps);;
     this.servicio.ModificarRegistro(modelo).subscribe(
       (datos) => {
         alert("Registro modificado correctamente");

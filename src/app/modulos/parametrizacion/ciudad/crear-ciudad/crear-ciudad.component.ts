@@ -6,6 +6,8 @@ import { PaisModelo } from 'src/app/modelos/pais.modelo';
 import { CiudadService } from 'src/app/servicios/ciudad.service';
 import { PaiseService } from 'src/app/servicios/paise.service';
 
+declare var IniciarSelect: any;
+
 @Component({
   selector: 'app-crear-ciudad',
   templateUrl: './crear-ciudad.component.html',
@@ -33,6 +35,9 @@ export class CrearCiudadComponent implements OnInit {
     this.PaiseServicio.ListarRegistros().subscribe(
       (datos) =>{
         this.listaPaises = datos;
+        setTimeout(() => {
+          IniciarSelect();
+        }, 500);
       },
       (erro) =>{
         alert("error cargando los deptos")
@@ -48,7 +53,7 @@ export class CrearCiudadComponent implements OnInit {
     let ps = this.ObtenerFgValidator.pais.value;
     let modelo: CiudadModelo = new CiudadModelo();
     modelo.Nombre = nom;
-    modelo.pais = ps;
+    modelo.pais = parseInt(ps);
     this.servicio.AlmacenarRegistro(modelo).subscribe(
       (datos) => {
         alert("Registro almacenado correctamente");

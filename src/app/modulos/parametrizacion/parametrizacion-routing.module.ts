@@ -11,6 +11,9 @@ import { CrearPaisComponent } from './pais/crear-pais/crear-pais.component';
 import { EditarPaisComponent } from './pais/editar-pais/editar-pais.component';
 import { EliminarPaisComponent } from './pais/eliminar-pais/eliminar-pais.component';
 import { ListarPaisComponent } from './pais/listar-pais/listar-pais.component';
+import { CrearProyectoComponent } from './proyecto/crear-proyecto/crear-proyecto.component';
+import { EditarProyectoComponent } from './proyecto/editar-proyecto/editar-proyecto.component';
+import { EliminarProyectoComponent } from './proyecto/eliminar-proyecto/eliminar-proyecto.component';
 import { ListarProyectoComponent } from './proyecto/listar-proyecto/listar-proyecto.component';
 
 const routes: Routes = [
@@ -61,17 +64,17 @@ const routes: Routes = [
   },
   {
     path: 'crear-proyectos',
-    component: CrearCiudadComponent,
+    component: CrearProyectoComponent,
     canActivate: [ValidadorSesionGuard]
   },
   {
     path: 'editar-proyectos/:id',
-    component: EditarPaisComponent,
+    component: EditarProyectoComponent,
     canActivate: [ValidadorSesionGuard]
   },
   {
     path: 'eliminar-proyectos/:id',
-    component: EliminarPaisComponent,
+    component: EliminarProyectoComponent,
     canActivate: [ValidadorSesionGuard]
   },
   {

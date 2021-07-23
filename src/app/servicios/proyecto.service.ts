@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from '../config/datos.generales';
@@ -27,7 +27,7 @@ export class ProyectoService {
 
   AlmacenarRegistro(modelo: ProyectoModelo): Observable<ProyectoModelo> {
     let ciudadId = 0;
-    if(modelo.){
+    if(modelo.ciudad){
       ciudadId = parseInt(modelo.ciudad.toString());
     }
     return this.http.post<ProyectoModelo>(
@@ -45,11 +45,11 @@ export class ProyectoService {
 
   ModificarRegistro(modelo: ProyectoModelo): Observable<ProyectoModelo> {
     let ciudadId = 0;
-    if(modelo.){
+    if(modelo.ciudad){
       ciudadId = parseInt(modelo.ciudad.toString());
     }
     return this.http.put<ProyectoModelo>(
-      `${this.url}/proyectos/${modelo.Id_Proyecto}`,
+      `${this.url}/proyectos/${modelo.Id_proyecto}`,
       {
         Nombre: modelo.Nombre,
         ciudad: ciudadId

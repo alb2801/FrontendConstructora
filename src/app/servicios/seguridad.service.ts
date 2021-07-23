@@ -5,6 +5,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { UsuarioModelo } from '../modelos/usuario.modelo';
 import { DatosGenerales } from '../config/datos.generales';
 import { ResetPassModelo } from '../modelos/resetear-contraseña.modelo';
+import { cambiarClaveModelo } from '../modelos/cambiar-contraseña.modelo';
+
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +56,26 @@ export class SeguridadService {
       });
   }
 
+  CambiarContraseña(modelo : cambiarClaveModelo): Observable<any>{
+    let Id_usuario;
+    this.ObtenerDatosSesion().subscribe((datos) => {
+      Id_usuario = datos.Id_usuario;
+      console.log(Id_usuario)
+    }) 
+    return this.http.post<cambiarClaveModelo>(
+      `${this.url}/cambiar-clave`,
+      
+      {
+        Id_usuario: Id_usuario,
+        Contrasena: modelo.Contrasena,
+        ContrasenaNueva: modelo.ContrasenaNueva
+      },
+      {
+        headers: new HttpHeaders({
+          "Authorization" : `Bearer ${this.ObternerToken()}`
+        })
+      });
+  }
   RefrescarDatosSesion(usuarioModelo: UsuarioModelo) {
     this.datosDeSesion.next(usuarioModelo);
   }
@@ -84,7 +106,18 @@ export class SeguridadService {
     let datos = localStorage.getItem("session-data");
     if (datos) {
       let obj: UsuarioModelo = JSON.parse(datos);
+      console.log(obj.tk)
       return obj.tk;
+    } else {
+      return "";
+    }
+  }
+
+  UsuarioId(){
+    let datos = localStorage.getItem("session-data");
+    if (datos) {
+      let obj: UsuarioModelo = JSON.parse(datos);
+      return obj.Id_usuario;
     } else {
       return "";
     }

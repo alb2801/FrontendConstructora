@@ -25,16 +25,16 @@ export class CiudadService {
     return this.http.get<CiudadModelo>(`${this.url}/ciudades/${Id}`);
   }
 
+  BuscarRegistrosPorPais(paisId: number): Observable<CiudadModelo[]> {
+    return this.http.get<CiudadModelo[]>(`${this.url}/pais/${paisId}/ciudads`);
+  }
+
   AlmacenarRegistro(modelo: CiudadModelo): Observable<CiudadModelo> {
-    let paisId = 0;
-    if(modelo.pais){
-      paisId = parseInt(modelo.pais.toString());
-    }
     return this.http.post<CiudadModelo>(
       `${this.url}/ciudades`,
       {
         Nombre: modelo.Nombre,
-        pais: paisId
+        pais: modelo.pais
       },
       {
         headers: new HttpHeaders({
@@ -44,15 +44,11 @@ export class CiudadService {
   }
 
   ModificarRegistro(modelo: CiudadModelo): Observable<CiudadModelo> {
-    let paisId = 0;
-    if(modelo.pais){
-      paisId = parseInt(modelo.pais.toString());
-    }
     return this.http.put<CiudadModelo>(
       `${this.url}/ciudades/${modelo.Id_ciudad}`,
       {
         Nombre: modelo.Nombre,
-        pais: paisId
+        pais: modelo.pais
       },
       {
         headers: new HttpHeaders({
