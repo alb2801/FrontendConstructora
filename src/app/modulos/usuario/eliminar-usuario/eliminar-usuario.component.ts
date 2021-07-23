@@ -10,7 +10,7 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
 export class EliminarUsuarioComponent implements OnInit {
 
   listaDatos: String[] = [];
-  id: number = 0;
+  id: String = '';
 
   constructor(
     private servicio: UsuarioService,
@@ -28,7 +28,7 @@ export class EliminarUsuarioComponent implements OnInit {
         if (datos.Id_usuario && datos.Nombre){
         this.listaDatos.push(datos.Id_usuario?.toString());
         this.listaDatos.push(datos.Nombre);
-        this.id = parseInt(datos.Id_usuario+"");
+        this.id = datos.Id_usuario;
       }
       },
       (err) => {
@@ -39,10 +39,11 @@ export class EliminarUsuarioComponent implements OnInit {
 
   EliminarRegistro(){
     let id = this.id;
+    console.log(id)
     this.servicio.EliminarRegistro(id).subscribe(
       (datos) => {
         alert("Registro eliminado correctamente");
-        this.router.navigate(["/parametrizacion/listar-usuario"])
+        this.router.navigate(["/usuario/listar-usuario"])
       },
       (err) => {
         alert("Error eliminando el registro");

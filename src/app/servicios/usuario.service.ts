@@ -73,7 +73,7 @@ export class UsuarioService {
       });
   }
 
-  EliminarRegistro(id: number): Observable<UsuarioModelo> {
+  EliminarRegistro(id: String): Observable<UsuarioModelo> {
     return this.http.delete<UsuarioModelo>(
       `${this.url}/usuarios/${id}`,
       {
