@@ -1,1 +1,57 @@
-<p>listar-proyecto works!</p>
+<br>
+<a class="waves-effect waves-light btn" routerLink="/parametrizacion/crear-proyectos"><i class="material-icons left">add</i>Agregar</a>
+
+<table class="table responsive-table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Descripcion
+            </th>
+            <th>
+                Imagen
+            </th>
+            <th>
+                Ciudad
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let r of listarRegistros | paginate: { itemsPerPage: regPorPagina, currentPage: pagina }">
+            <th>
+                {{r.Id_proyecto}}
+            </th>
+            <th>
+                {{r.Nombre}}
+            </th>
+            <th>
+                {{r.Descripcion}}
+            </th>
+            <th>
+                {{r.Imagen}}
+            </th>
+            <th>
+                {{r.paisCiudad.Nombre}}
+            </th>
+            <th>
+                <a class="waves-effect orange waves-light btn" routerLink="/parametrizacion/editar-proyectos/{{r.Id_ciudad}}"><i class="material-icons left">edit</i>Modificar</a>
+                &nbsp;&nbsp;
+                <a class="waves-effect red waves-light btn" routerLink="/parametrizacion/eliminar-proyectos/{{r.Id_ciudad}}"><i class="material-icons left">delete</i>Eliminar</a>
+
+            </th>
+        </tr>
+    </tbody>
+</table>
+
+<pagination-controls  (pageChange)="CambioPagina($event)"
+                      previousLabel="Anterior"
+                      nextLabel="Siguiente">
+</pagination-controls>

@@ -60,6 +60,21 @@ const routes: Routes = [
     canActivate: [ValidadorSesionGuard]
   },
   {
+    path: 'crear-proyectos',
+    component: CrearCiudadComponent,
+    canActivate: [ValidadorSesionGuard]
+  },
+  {
+    path: 'editar-proyectos/:id',
+    component: EditarPaisComponent,
+    canActivate: [ValidadorSesionGuard]
+  },
+  {
+    path: 'eliminar-proyectos/:id',
+    component: EliminarPaisComponent,
+    canActivate: [ValidadorSesionGuard]
+  },
+  {
     path: 'listar-bloques',
     component: ListarBloqueComponent,
     canActivate: [ValidadorSesionGuard]

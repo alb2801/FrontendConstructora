@@ -41,7 +41,6 @@ export class SeguridadService {
   }
 
   ResetearContraseña(modelo : ResetPassModelo): Observable<any>{
-    console.log(modelo.Correo)
     return this.http.post<any>(
       `${this.url}/rest-password`,
       
