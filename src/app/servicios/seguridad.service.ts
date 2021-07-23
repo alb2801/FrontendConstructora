@@ -58,20 +58,22 @@ export class SeguridadService {
   }
 
   CambiarContraseña(modelo : cambiarClaveModelo): Observable<any>{
-    console.log(modelo.Id_usuario)
-    console.log(modelo.Contraseña)
-    console.log(modelo.ContraseñaNueva)
-    return this.http.post<any>(
+    let Id_usuario;
+    this.ObtenerDatosSesion().subscribe((datos) => {
+      Id_usuario = datos.Id_usuario;
+      console.log(Id_usuario)
+    }) 
+    return this.http.post<cambiarClaveModelo>(
       `${this.url}/cambiar-clave`,
       
       {
-        Id_usuario: modelo.Id_usuario,
-        Contraseña: modelo.Contraseña,
-        ContraseñaNueva: modelo.ContraseñaNueva
+        Id_usuario: Id_usuario,
+        Contrasena: modelo.Contrasena,
+        ContrasenaNueva: modelo.ContrasenaNueva
       },
       {
         headers: new HttpHeaders({
-          Authorizarion : `Bearer ${this.ObternerToken()}`
+          "Authorization" : `Bearer ${this.ObternerToken()}`
         })
       });
   }
