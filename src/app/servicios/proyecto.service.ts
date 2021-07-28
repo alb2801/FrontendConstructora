@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from '../config/datos.generales';
+import { ImagenProyectoModelo } from '../modelos/imagen.proyecto.modelo';
 import { ProyectoModelo } from '../modelos/proyecto.modelo';
 import { SeguridadService } from './seguridad.service';
 
@@ -26,15 +27,13 @@ export class ProyectoService {
   }
 
   AlmacenarRegistro(modelo: ProyectoModelo): Observable<ProyectoModelo> {
-    let ciudadId = 0;
-    if(modelo.ciudad){
-      ciudadId = parseInt(modelo.ciudad.toString());
-    }
     return this.http.post<ProyectoModelo>(
       `${this.url}/proyectos`,
       {
         Nombre: modelo.Nombre,
-        ciudad: ciudadId
+        Descripcion: modelo.Descripcion,
+        Imagen: modelo.Imagen,
+        ciudad: modelo.ciudad
       },
       {
         headers: new HttpHeaders({
@@ -44,15 +43,13 @@ export class ProyectoService {
   }
 
   ModificarRegistro(modelo: ProyectoModelo): Observable<ProyectoModelo> {
-    let ciudadId = 0;
-    if(modelo.ciudad){
-      ciudadId = parseInt(modelo.ciudad.toString());
-    }
     return this.http.put<ProyectoModelo>(
       `${this.url}/proyectos/${modelo.Id_proyecto}`,
       {
         Nombre: modelo.Nombre,
-        ciudad: ciudadId
+        Descripcion: modelo.Descripcion,
+        Imagen: modelo.Imagen,
+        ciudad: modelo.ciudad
       },
       {
         headers: new HttpHeaders({
@@ -68,6 +65,17 @@ export class ProyectoService {
       {
         headers: new HttpHeaders({
           "Authorization":`Bearer ${this.token}`
+        })
+      });
+  }
+
+  CargarArchivo(formData: FormData): Observable<ImagenProyectoModelo> {
+    return this.http.post<ImagenProyectoModelo>(
+      `${this.url}/CargarImagenProyecto`,
+      formData,
+      {
+        headers: new HttpHeaders({
+          "Authorization": `Bearer ${this.token}`
         })
       });
   }

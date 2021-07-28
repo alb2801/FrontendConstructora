@@ -4,7 +4,7 @@ export class ProyectoModelo{
     Id_proyecto?: number;
     Nombre?: String;
     Descripcion?: String;
-    Imagen?: object;
+    Imagen?: String;
     ciudad?: number;
     ciudadProyecto: CiudadModelo = new CiudadModelo;
 }
