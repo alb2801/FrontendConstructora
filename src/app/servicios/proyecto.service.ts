@@ -43,7 +43,6 @@ export class ProyectoService {
   }
 
   ModificarRegistro(modelo: ProyectoModelo): Observable<ProyectoModelo> {
-
     return this.http.put<ProyectoModelo>(
       `${this.url}/proyectos/${modelo.Id_proyecto}`,
       {

@@ -29,7 +29,7 @@ export class CrearProyectoComponent implements OnInit {
       nombre: ['', [Validators.required]],
       descripcion: ['', [Validators.required]],
       imagen: ['', []],
-      nombremImagen: ['', [Validators.required]],
+      nombreImagen: ['', [Validators.required]],
       ciudad: ['', [Validators.required]]
     });
   }
@@ -56,19 +56,18 @@ export class CrearProyectoComponent implements OnInit {
     let nom = this.ObtenerFgValidator.nombre.value;
     let des = this.ObtenerFgValidator.descripcion.value;
     let ciudad = this.ObtenerFgValidator.ciudad.value;
-    let img = this.ObtenerFgValidator.nombremImagen.value;
+    let img = this.ObtenerFgValidator.nombreImagen.value;
     let modelo: ProyectoModelo = new ProyectoModelo();
     modelo.Nombre = nom;
     modelo.Descripcion = des;
     modelo.ciudad = parseInt(ciudad);
-    modelo.Imagen = this.nombreImagenTemp;
-    console.log( modelo.Descripcion)
-    console.log( modelo.Imagen)
+    modelo.Imagen = img;
+    console.log(modelo.Imagen)
 
     this.Proyectoservicio.AlmacenarRegistro(modelo).subscribe(
       (datos) => {
         alert("Registro almacenado correctamente");
-        this.router.navigate(["/parametrizacion/listar-ciudades"])
+        this.router.navigate(["/parametrizacion/listar-proyectos"])
       },
       (err) => {
         alert("Error almacenando el registro");
@@ -81,7 +80,7 @@ export class CrearProyectoComponent implements OnInit {
       let archivo = event.target.files[0];
       this.fgValidador.controls.imagen.setValue(archivo);
     }else{
-      console.log("Se ha cancelado la selecciónd e archivo");
+      console.log("Se ha cancelado la selección de archivo");
     }
   }
 
