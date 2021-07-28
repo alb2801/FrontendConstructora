@@ -3,16 +3,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as crypto from 'crypto-js';
 import { UsuarioModelo } from 'src/app/modelos/usuario.modelo';
-import { SeguridadService } from 'src/app/servicios/seguridad.service'
+import { SeguridadService } from 'src/app/servicios/seguridad.service';
+
 
 @Component({
   selector: 'app-iniciar-sesion',
   templateUrl: './iniciar-sesion.component.html',
-  styleUrls: ['./iniciar-sesion.component.css']
+  styleUrls: ['./iniciar-sesion.component.css'],
+
 })
 export class IniciarSesionComponent implements OnInit {
 
   fgValidador: FormGroup = new FormGroup({});
+
+
 
   constructor(private fb: FormBuilder,
     private servicioSeguridad: SeguridadService,

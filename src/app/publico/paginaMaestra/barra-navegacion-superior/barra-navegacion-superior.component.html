@@ -4,6 +4,7 @@
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li *ngIf="isAdmin"><a routerLink="usuario/listar-usuario">Usuarios</a></li>
+        <li *ngIf="isVende"><a routerLink="vende/crear-cliente">Cliente</a></li>
         <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-paises">Paises</a></li>
         <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-ciudades">Ciudades</a></li>
         <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-proyectos">Proyectos</a></li>
@@ -22,6 +23,7 @@
     <li *ngIf="isLoggedIn" class="" ><span class="flow-text">{{nombreCompleto}}</span></li>
     <li *ngIf="isLoggedIn"><a routerLink="seguridad/cambiar-clave">Cambiar Contraseña</a></li>
     <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
+    <li *ngIf="isVende"><a routerLink="vende/crear-cliente">Cliente</a></li>
     <li *ngIf="isAdmin"><a routerLink="usuario/listar-usuario">Usuarios</a></li>
     <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-paises">Paises</a></li>
     <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-ciudades">Ciudades</a></li>
