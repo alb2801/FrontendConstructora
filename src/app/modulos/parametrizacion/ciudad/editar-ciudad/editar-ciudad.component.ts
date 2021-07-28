@@ -45,7 +45,6 @@ export class EditarCiudadComponent implements OnInit {
     this.PaiseServicio.ListarRegistros().subscribe(
       (datos) =>{
         this.listaPaises = datos;
-        this.listaPaises = datos;
         setTimeout(() => {
           IniciarSelect();
         }, 500);
@@ -79,7 +78,7 @@ export class EditarCiudadComponent implements OnInit {
     let modelo: CiudadModelo = new CiudadModelo();
     modelo.Id_ciudad = id;
     modelo.Nombre = nom;
-    modelo.pais= parseInt(ps);;
+    modelo.pais= parseInt(ps);
     this.servicio.ModificarRegistro(modelo).subscribe(
       (datos) => {
         alert("Registro modificado correctamente");
