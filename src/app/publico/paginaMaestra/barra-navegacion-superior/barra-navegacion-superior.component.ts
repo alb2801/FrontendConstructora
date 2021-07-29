@@ -13,6 +13,7 @@ export class BarraNavegacionSuperiorComponent implements OnInit {
 
   isLoggedIn: boolean = false;
   isAdmin: boolean = false;
+  isVende: boolean = false;
   nombreCompleto: String ='';
 
   constructor(private servicioSeguridad: SeguridadService) { }
@@ -28,6 +29,11 @@ export class BarraNavegacionSuperiorComponent implements OnInit {
           this.isAdmin=true;
         }else{
           this.isAdmin=false;
+        }
+        if(datos.Rol=='vendedor'){
+          this.isVende=true;
+        }else{
+          this.isVende=false
         }
         this.nombreCompleto = datos.Nombre +" "+datos.Apellido;
       },

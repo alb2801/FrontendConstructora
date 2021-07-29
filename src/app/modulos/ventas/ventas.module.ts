@@ -10,6 +10,9 @@ import { ListarSolicitudComponent } from './solicitud/listar-solicitud/listar-so
 import { AceptarCancelarSolicitudComponent } from './solicitud/aceptar-cancelar-solicitud/aceptar-cancelar-solicitud.component';
 import { CrearInfofinancieraComponent } from './Info-Financiera/crear-infofinanciera/crear-infofinanciera.component';
 import { EditarInfofinancieraComponent } from './Info-Financiera/editar-infofinanciera/editar-infofinanciera.component';
+import { ListarClienteComponent } from './cliente/listar-cliente/listar-cliente.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,11 +24,15 @@ import { EditarInfofinancieraComponent } from './Info-Financiera/editar-infofina
     ListarSolicitudComponent,
     AceptarCancelarSolicitudComponent,
     CrearInfofinancieraComponent,
-    EditarInfofinancieraComponent
+    EditarInfofinancieraComponent,
+    ListarClienteComponent,
   ],
   imports: [
     CommonModule,
-    VentasRoutingModule
+    VentasRoutingModule,
+    NgxPaginationModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class VentasModule { }
