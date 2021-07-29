@@ -18,11 +18,22 @@ export class BloqueService {
   }
 
   ListarRegistros(): Observable<BloqueModelo[]>{
-    return this.http.get<BloqueModelo[]>(`${this.url}/bloques/?filter={"include":["proyecto"]}`);
+    return this.http.get<BloqueModelo[]>(
+      `${this.url}/bloques/?filter={"include":["proyecto"]}`,
+      {
+        headers: new HttpHeaders({
+          "Authorization":`Bearer ${this.token}`
+        })
+      });
   }
 
   BuscarRegistros(Id: number): Observable<BloqueModelo>{
-    return this.http.get<BloqueModelo>(`${this.url}/bloques/${Id}`);
+    return this.http.get<BloqueModelo>(`${this.url}/bloques/${Id}`,
+    {
+      headers: new HttpHeaders({
+        "Authorization":`Bearer ${this.token}`
+      })
+    });
   }
 
   BuscarRegistrosPorPais(paisId: number): Observable<BloqueModelo[]> {

@@ -20,11 +20,23 @@ export class ClienteService {
   }
 
   ListarRegistros(): Observable<ClienteModelo[]>{
-    return this.http.get<ClienteModelo[]>(`${this.url}/clientes/?filter={"include":["ciudad","solicitud","infoFinanciera"]}`);
+    return this.http.get<ClienteModelo[]>(
+      `${this.url}/clientes/?filter={"include":["ciudad","solicitud","infoFinanciera"]}`,
+      {
+        headers: new HttpHeaders({
+          "Authorization":`Bearer ${this.token}`
+        })
+      });
   }
 
   BuscarRegistros(Id_cliente: number): Observable<ClienteModelo>{
-    return this.http.get<ClienteModelo>(`${this.url}/clientes/${Id_cliente}`);
+    return this.http.get<ClienteModelo>(
+      `${this.url}/clientes/${Id_cliente}`,
+      {
+        headers: new HttpHeaders({
+          "Authorization":`Bearer ${this.token}`
+        })
+      });
   }
 
   AlmacenarRegistro(modelo: ClienteModelo): Observable<ClienteModelo> {

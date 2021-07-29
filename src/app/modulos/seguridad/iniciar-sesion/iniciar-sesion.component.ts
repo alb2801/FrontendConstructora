@@ -26,8 +26,8 @@ export class IniciarSesionComponent implements OnInit {
 
   ConstruirFormulario() {
     this.fgValidador = this.fb.group({
-      usuario: ['jhonatangarcia6699@gmail.com', [Validators.required, Validators.email]],
-      clave: ['HSQAOjj1', [Validators.required, Validators.min(0)]]
+      usuario: ['alejandro.1701814107@ucaldas.edu.co', [Validators.required, Validators.email]],
+      clave: ['4QX96KKM', [Validators.required, Validators.min(0)]]
     });
   }
 

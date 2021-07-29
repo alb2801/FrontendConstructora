@@ -18,25 +18,38 @@ export class InfoFinancieraService {
   }
 
   ListarRegistros(): Observable<InfoFinacieraModelo[]>{
-    return this.http.get<InfoFinacieraModelo[]>(`${this.url}/info-financieras/?filter={"include":["ciudadCliente"]}`);
+    return this.http.get<InfoFinacieraModelo[]>(
+      `${this.url}/info-financieras/?filter={"include":["cliente"]}`,
+    {
+      headers: new HttpHeaders({
+        "Authorization":`Bearer ${this.token}`
+      })
+    });
   }
 
   BuscarRegistros(Id_financiera: number): Observable<InfoFinacieraModelo>{
-    return this.http.get<InfoFinacieraModelo>(`${this.url}/info-financieras/${Id_financiera}`);
+    return this.http.get<InfoFinacieraModelo>(
+      `${this.url}/info-financieras/${Id_financiera}`,
+      {
+        headers: new HttpHeaders({
+          "Authorization":`Bearer ${this.token}`
+        })
+      });
+      
   }
 
   AlmacenarRegistro(modelo: InfoFinacieraModelo): Observable<InfoFinacieraModelo> {
     return this.http.post<InfoFinacieraModelo>(
       `${this.url}/info-financieras`,
       {
-        total: modelo.Total_ingresos,
-        datos: modelo.Datos_trabajo,
-        tiempo: modelo.Tiempo_trab_actual,
-        refFami: modelo.Nombre_ref_familiar,
-        telFami: modelo.Telefono_ref_familiar,
-        refPer: modelo.Nombre_ref_personal,
-        telPer: modelo.Telefono_ref_personal,
-        clienteId: modelo.clienteId,
+        Total_ingresos: modelo.Total_ingresos,
+        Datos_trabajo: modelo.Datos_trabajo,
+        Tiempo_trab_actual: modelo.Tiempo_trab_actual,
+        Nombre_ref_familiar: modelo.Nombre_ref_familiar,
+        Telefono_ref_familiar: modelo.Telefono_ref_familiar,
+        Nombre_ref_personal: modelo.Nombre_ref_personal,
+        Telefono_ref_personal: modelo.Telefono_ref_personal,
+        clienteId: modelo.clienteId
       },
       {
         headers: new HttpHeaders({
@@ -49,14 +62,14 @@ export class InfoFinancieraService {
     return this.http.put<InfoFinacieraModelo>(
       `${this.url}/info-financieras/${modelo.Id_financiera}`,
       {
-        total: modelo.Total_ingresos,
-        datos: modelo.Datos_trabajo,
-        tiempo: modelo.Tiempo_trab_actual,
-        refFami: modelo.Nombre_ref_familiar,
-        telFami: modelo.Telefono_ref_familiar,
-        refPer: modelo.Nombre_ref_personal,
-        telPer: modelo.Telefono_ref_personal,
-        clienteId: modelo.clienteId,
+        Total_ingresos: modelo.Total_ingresos,
+        Datos_trabajo: modelo.Datos_trabajo,
+        Tiempo_trab_actual: modelo.Tiempo_trab_actual,
+        Nombre_ref_familiar: modelo.Nombre_ref_familiar,
+        Telefono_ref_familiar: modelo.Telefono_ref_familiar,
+        Nombre_ref_personal: modelo.Nombre_ref_personal,
+        Telefono_ref_personal: modelo.Telefono_ref_personal,
+        clienteId: modelo.clienteId
       },
       {
         headers: new HttpHeaders({

@@ -19,11 +19,23 @@ export class ProyectoService {
   }
 
   ListarRegistros(): Observable<ProyectoModelo[]>{
-    return this.http.get<ProyectoModelo[]>(`${this.url}/proyectos/?filter={"include":["ciudadProyecto"]}`);
+    return this.http.get<ProyectoModelo[]>(
+      `${this.url}/proyectos/?filter={"include":["ciudadProyecto"]}`,
+      {
+        headers: new HttpHeaders({
+          "Authorization":`Bearer ${this.token}`
+        })
+      });
   }
 
   BuscarRegistros(Id: number): Observable<ProyectoModelo>{
-    return this.http.get<ProyectoModelo>(`${this.url}/proyectos/${Id}`);
+    return this.http.get<ProyectoModelo>(
+      `${this.url}/proyectos/${Id}`,
+      {
+        headers: new HttpHeaders({
+          "Authorization":`Bearer ${this.token}`
+        })
+      });
   }
 
   AlmacenarRegistro(modelo: ProyectoModelo): Observable<ProyectoModelo> {

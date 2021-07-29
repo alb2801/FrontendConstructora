@@ -3,8 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DatosGenerales } from 'src/app/config/datos.generales';
 import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
+import { PaisModelo } from 'src/app/modelos/pais.modelo';
 import { ProyectoModelo } from 'src/app/modelos/proyecto.modelo';
 import { CiudadService } from 'src/app/servicios/ciudad.service';
+import { PaiseService } from 'src/app/servicios/paise.service';
 import { ProyectoService } from 'src/app/servicios/proyecto.service';
 
 declare var IniciarSelect: any;
@@ -18,15 +20,18 @@ export class CrearProyectoComponent implements OnInit {
 
   fgValidador: FormGroup = new FormGroup({});
   listaCiudades: CiudadModelo[] = [];
+  listaPaises: PaisModelo[] = [];
   urlBackend: String = DatosGenerales.url;
 
   constructor(private fb: FormBuilder,
     private Proyectoservicio: ProyectoService,
     private CiudadServicio: CiudadService,
+    private PaServicio: PaiseService,
     private router: Router) { }
 
   ConstruirFormulario() {
     this.fgValidador = this.fb.group({
+      pais: ['', [Validators.required]],
       nombre: ['', [Validators.required]],
       descripcion: ['', [Validators.required]],
       imagen: ['', []],
@@ -37,15 +42,28 @@ export class CrearProyectoComponent implements OnInit {
 
   ngOnInit(): void {
     this.ConstruirFormulario();
-    this.CiudadServicio.ListarRegistros().subscribe(
-      (datos) =>{
+    this.cargarPaises();
+  }
+
+  cargarPaises(){
+    
+    this.PaServicio.ListarRegistros().subscribe(
+      (datos) => {
+        this.listaPaises = datos;
+        setTimeout(() => {
+          IniciarSelect();
+        }, 500);
+      }
+    );
+  }
+
+  cargarCiudadesPorPais(){
+    this.CiudadServicio.BuscarRegistrosPorPais(this.fgValidador.controls.pais.value).subscribe(
+      (datos) => {
         this.listaCiudades = datos;
         setTimeout(() => {
           IniciarSelect();
         }, 500);
-      },
-      (erro) =>{
-        alert("error cargando las ciudades")
       }
     );
   }

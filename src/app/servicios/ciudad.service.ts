@@ -18,11 +18,23 @@ export class CiudadService {
   }
 
   ListarRegistros(): Observable<CiudadModelo[]>{
-    return this.http.get<CiudadModelo[]>(`${this.url}/ciudades/?filter={"include":["paisCiudad"]}`);
+    return this.http.get<CiudadModelo[]>(
+      `${this.url}/ciudades/?filter={"include":["paisCiudad"]}`,
+      {
+        headers: new HttpHeaders({
+          "Authorization":`Bearer ${this.token}`
+        })
+      });
   }
 
   BuscarRegistros(Id: number): Observable<CiudadModelo>{
-    return this.http.get<CiudadModelo>(`${this.url}/ciudades/${Id}`);
+    return this.http.get<CiudadModelo>(
+      `${this.url}/ciudades/${Id}`,
+      {
+        headers: new HttpHeaders({
+          "Authorization":`Bearer ${this.token}`
+        })
+      });
   }
 
   BuscarRegistrosPorPais(paisId: number): Observable<CiudadModelo[]> {

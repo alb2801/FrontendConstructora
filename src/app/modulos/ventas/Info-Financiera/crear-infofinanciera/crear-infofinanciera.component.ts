@@ -65,13 +65,13 @@ export class CrearInfofinancieraComponent implements OnInit {
     let telP = this.ObtenerFgValidator.Telefono_ref_personal.value;
     let cliente = this.ObtenerFgValidator.clienteId.value;
     let modelo: InfoFinacieraModelo = new InfoFinacieraModelo();
-    modelo.Total_ingresos = tot;
+    modelo.Total_ingresos = parseInt(tot);
     modelo.Datos_trabajo = dat;
     modelo.Tiempo_trab_actual = time;
     modelo.Nombre_ref_familiar = refF;
-    modelo.Telefono_ref_familiar = telF;
+    modelo.Telefono_ref_familiar = parseInt(telF);
     modelo.Nombre_ref_personal = refP;
-    modelo.Telefono_ref_personal = telP;
+    modelo.Telefono_ref_personal = parseInt(telP);
     modelo.clienteId = parseInt(cliente);
 
 

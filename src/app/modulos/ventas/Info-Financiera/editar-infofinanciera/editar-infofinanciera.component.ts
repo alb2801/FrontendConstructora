@@ -29,6 +29,7 @@ export class EditarInfofinancieraComponent implements OnInit {
 
   ConstruirFormulario() {
     this.fgValidador = this.fb.group({
+      id: ['', [Validators.required]],
       Total_ingresos: ['', [Validators.required]],
       Datos_trabajo: ['', [Validators.required]],
       Tiempo_trab_actual: ['', [Validators.required]],
@@ -83,29 +84,31 @@ export class EditarInfofinancieraComponent implements OnInit {
     return this.fgValidador.controls;
   }
   ModificarRegistro(){
+    let id = this.ObtenerFgValidator.id.value;
     let tot = this.ObtenerFgValidator.Total_ingresos.value;
     let dat = this.ObtenerFgValidator.Datos_trabajo.value;
     let tim = this.ObtenerFgValidator.Tiempo_trab_actual.value;
     let nomF = this.ObtenerFgValidator.Nombre_ref_familiar.value;
     let telF = this.ObtenerFgValidator.Telefono_ref_familiar.value;
     let nomP = this.ObtenerFgValidator.Nombre_ref_personal.value;
-    let telP = this.ObtenerFgValidator.direcTelefono_ref_personalcion.value;
+    let telP = this.ObtenerFgValidator.Telefono_ref_personal.value;
     let cliente = this.ObtenerFgValidator.clienteId.value;
     let modelo: InfoFinacieraModelo = new InfoFinacieraModelo();
-    modelo.Total_ingresos = tot;
+    modelo.Id_financiera= id;
+    modelo.Total_ingresos = parseInt(tot);
     modelo.Datos_trabajo = dat;
     modelo.Tiempo_trab_actual = tim;
     modelo.Nombre_ref_familiar = nomF;
-    modelo.Telefono_ref_familiar = telF;
+    modelo.Telefono_ref_familiar = parseInt(telF);
     modelo.Nombre_ref_personal = nomP;
-    modelo.Telefono_ref_personal = telP;
+    modelo.Telefono_ref_personal = parseInt(telP);
     modelo.clienteId = parseInt(cliente);
 
 
     this.InfoFinancieraService.ModificarRegistro(modelo).subscribe(
       (datos) => {
         alert("Registro modificado correctamente");
-        this.router.navigate(["/ventas/listar-cliente"])
+        this.router.navigate(["/ventas/listar-infoFinan"])
       },
       (err) => {
         alert("Error almacenando el registro");

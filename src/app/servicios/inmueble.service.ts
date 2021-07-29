@@ -18,11 +18,23 @@ export class InmuebleService {
   }
 
   ListarRegistros(): Observable<InmuebleModelo[]>{
-    return this.http.get<InmuebleModelo[]>(`${this.url}/inmuebles/?filter={"include":["bloque"]}`);
+    return this.http.get<InmuebleModelo[]>(
+      `${this.url}/inmuebles/?filter={"include":["bloque"]}`,
+      {
+        headers: new HttpHeaders({
+          "Authorization":`Bearer ${this.token}`
+        })
+      });
   }
 
   BuscarRegistros(Id: number): Observable<InmuebleModelo>{
-    return this.http.get<InmuebleModelo>(`${this.url}/inmuebles/${Id}`);
+    return this.http.get<InmuebleModelo>(
+      `${this.url}/inmuebles/${Id}`,
+      {
+        headers: new HttpHeaders({
+          "Authorization":`Bearer ${this.token}`
+        })
+      });
   }
 
   BuscarRegistrosPorPais(paisId: number): Observable<InmuebleModelo[]> {

@@ -24,7 +24,19 @@
             </div>
             <div class="col s3">
               <input type="button" class="btn" value="Cargar Imagen" (click)="CargarImagenAlServidor()" />
-            </div>  
+            </div>    
+        <div class="input-field col s12">
+            <select formControlName="pais" (change)="cargarCiudadesPorPais()">
+              <option *ngFor="let d of listaPaises" value="{{d.Id_pais}}">{{d.Nombre}}</option>
+            </select>
+            <label>Paises</label>
+        </div>
+         <div class="input-field col s12">
+            <select formControlName="ciudad">
+                <option *ngFor="let c of listaCiudades" value="{{c.Id_ciudad}}">{{c.Nombre}}</option>
+            </select>
+            <label>Ciudades</label>
+        </div>
         <div class="input-field col s12">
             <select formControlName="ciudad">
                 <option *ngFor="let c of listaCiudades" value="{{c.Id_ciudad}}">{{c.Nombre}}</option>
