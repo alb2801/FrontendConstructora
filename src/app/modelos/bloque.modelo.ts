@@ -4,6 +4,6 @@ export class BloqueModelo{
     Id_bloque?: number;
     Nombre?: String;
     Descripcion?: string;
-    proyecto?: number;
-    proyectoBloque: ProyectoModelo = new ProyectoModelo();  
+    proyectoId?: number;
+    proyecto: ProyectoModelo = new ProyectoModelo();  
 }
