@@ -30,12 +30,12 @@ const routes: Routes = [
     canActivate: [ValidadorSesionGuard]
   },
   {
-    path: 'listar-infoFinan',
+    path: 'crear-infoFinan',
     component: CrearInfofinancieraComponent,
     canActivate: [ValidadorSesionGuard]
   },
   {
-    path: 'listar-infoFinan',
+    path: 'editar-infoFinan',
     component: EditarInfofinancieraComponent,
     canActivate: [ValidadorSesionGuard]
   }
