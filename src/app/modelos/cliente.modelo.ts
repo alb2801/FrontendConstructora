@@ -16,8 +16,8 @@ export class ClienteModelo{
     ciudadId?: number;
     ciudad: CiudadModelo = new CiudadModelo();
     solicitudId?: number;
-    solicitud: SolicitudModelo = new SolicitudModelo();
+    solicitud?: SolicitudModelo = new SolicitudModelo();
     infoFinancieraId?: number;
-    infoFinanciera: InfoFinacieraModelo = new InfoFinacieraModelo();
+    infoFinanciera?: InfoFinacieraModelo = new InfoFinacieraModelo();
     
 }

@@ -19,7 +19,6 @@ export class EditarClienteComponent implements OnInit {
   fgValidador: FormGroup = new FormGroup({});
   listaCiudades: CiudadModelo[] = [];
   urlBackend: String = DatosGenerales.url;
-  /* nombreImagenTemp?: String = "Sin imagen"; */
 
   constructor(private fb: FormBuilder,
     private Clienteservicio: ClienteService,
@@ -29,6 +28,7 @@ export class EditarClienteComponent implements OnInit {
 
   ConstruirFormulario() {
     this.fgValidador = this.fb.group({
+      id: ['', [Validators.required]],
       documento: ['', [Validators.required]],
       nombre: ['', [Validators.required]],
       apellido: ['', [Validators.required]],
@@ -75,7 +75,6 @@ export class EditarClienteComponent implements OnInit {
         this.ObtenerFgValidator.celular.setValue(datos.Celular);
         this.ObtenerFgValidator.correo.setValue(datos.Correo_electronico);
         this.ObtenerFgValidator.direccion.setValue(datos.Direccion);
-        this.ObtenerFgValidator.contrasena.setValue(datos.Contrasena);
         this.ObtenerFgValidator.nombreImagen.setValue(datos.Fotografia);
         this.ObtenerFgValidator.ciudad.setValue(datos.ciudadId);
       },
@@ -88,6 +87,7 @@ export class EditarClienteComponent implements OnInit {
     return this.fgValidador.controls;
   }
   ModificarRegistro(){
+    let id = this.ObtenerFgValidator.id.value
     let doc = this.ObtenerFgValidator.documento.value;
     let nom = this.ObtenerFgValidator.nombre.value;
     let apl = this.ObtenerFgValidator.apellido.value;
@@ -98,6 +98,7 @@ export class EditarClienteComponent implements OnInit {
     let ciudad = this.ObtenerFgValidator.ciudad.value;
     let img = this.ObtenerFgValidator.nombreImagen.value;
     let modelo: ClienteModelo = new ClienteModelo();
+    modelo.Id_cliente= id;
     modelo.Documento = doc;
     modelo.Nombre = nom;
     modelo.Apellido = apl;
@@ -134,7 +135,6 @@ export class EditarClienteComponent implements OnInit {
     formData.append('file', this.fgValidador.controls.imagen.value);
     this.Clienteservicio.CargarArchivo(formData).subscribe(
       (datos) =>{
-       // this.nombreImagenTemp = datos.filename;
         this.fgValidador.controls.nombreImagen.setValue(datos.filename);
       },
       (error) => {

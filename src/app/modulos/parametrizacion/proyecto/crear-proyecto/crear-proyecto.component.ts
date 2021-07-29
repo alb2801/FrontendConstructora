@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DatosGenerales } from 'src/app/config/datos.generales';
 import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
 import { ProyectoModelo } from 'src/app/modelos/proyecto.modelo';
 import { CiudadService } from 'src/app/servicios/ciudad.service';
@@ -17,7 +18,7 @@ export class CrearProyectoComponent implements OnInit {
 
   fgValidador: FormGroup = new FormGroup({});
   listaCiudades: CiudadModelo[] = [];
-  nombreImagenTemp?: String = "Sin imagen";
+  urlBackend: String = DatosGenerales.url;
 
   constructor(private fb: FormBuilder,
     private Proyectoservicio: ProyectoService,
@@ -89,7 +90,6 @@ export class CrearProyectoComponent implements OnInit {
     formData.append('file', this.fgValidador.controls.imagen.value);
     this.Proyectoservicio.CargarArchivo(formData).subscribe(
       (datos) =>{
-        this.nombreImagenTemp = datos.filename;
         this.fgValidador.controls.nombreImagen.setValue(datos.filename);
       },
       (error) => {

@@ -19,7 +19,7 @@ export class EditarProyectoComponent implements OnInit {
   fgValidador: FormGroup = new FormGroup({});
   listaCiudades: CiudadModelo[] = [];
   urlBackend: String = DatosGenerales.url;
-  //nombreImagenTemp: String = "Sin imagen";
+  
 
   constructor(private fb: FormBuilder,
     private Proyectoservicio: ProyectoService,
@@ -117,7 +117,6 @@ export class EditarProyectoComponent implements OnInit {
     formData.append('file', this.fgValidador.controls.imagen.value);
     this.Proyectoservicio.CargarArchivo(formData).subscribe(
       (datos) =>{
-       // this.nombreImagenTemp = datos.filename;
         this.fgValidador.controls.nombreImagen.setValue(datos.filename);
       },
       (error) => {

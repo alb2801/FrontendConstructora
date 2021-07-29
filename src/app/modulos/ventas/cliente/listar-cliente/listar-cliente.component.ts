@@ -15,10 +15,10 @@ export class ListarClienteComponent implements OnInit {
   constructor(private servivio: ClienteService) { }
 
   ngOnInit(): void {
-    this.ObtenerListadoProyectos();
+    this.ObtenerListadoClientes();
   }
 
-  ObtenerListadoProyectos(){
+  ObtenerListadoClientes(){
     this.servivio.ListarRegistros().subscribe(
       (datos) => {
         this.listarRegistros = datos;
