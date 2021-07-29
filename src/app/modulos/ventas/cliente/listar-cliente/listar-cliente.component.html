@@ -1,0 +1,88 @@
+<br>
+<a class="waves-effect waves-light btn" routerLink="/ventas/crear-cliente"><i class="material-icons left">add</i>Agregar</a>
+
+<table class="table responsive-table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Documento
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Apellido
+            </th>
+            <th>
+                Fecha_nacimiento
+            </th>
+            <th>
+                Fotografia
+            </th>
+            <th>
+                Celular
+            </th>
+            <th>
+                Correo_electronico
+            </th>
+            <th>
+                Direccion
+            </th>
+            <th>
+                Contrasena
+            </th>
+            <th>
+                Ciudad
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let r of listarRegistros | paginate: { itemsPerPage: regPorPagina, currentPage: pagina }">
+            <th>
+                {{r.Id_cliente}}
+            </th>
+            <th>
+                {{r.Documento}}
+            </th>
+            <th>
+                {{r.Nombre}}
+            </th>
+            <th>
+                {{r.Apellido}}
+            </th>
+            <th>
+                {{r.Fecha_nacimiento}}
+            </th>
+            <th>
+                {{r.Fotografia}}
+            </th>
+            <th>
+                {{r.Celular}}
+            </th>
+            <th>
+                {{r.Correo_electronico}}
+            </th>
+            <th>
+                {{r.Contrasena}}
+            </th>
+            <th>
+                {{r.ciudadCliente.Nombre}}
+            </th>
+            <th>
+                <a class="waves-effect orange waves-light btn" routerLink="/ventas/editar-cliente/{{r.Id_cliente}}"><i class="material-icons left">edit</i>Modificar</a>
+
+            </th>
+        </tr>
+    </tbody>
+</table>
+
+<pagination-controls  (pageChange)="CambioPagina($event)"
+                      previousLabel="Anterior"
+                      nextLabel="Siguiente">
+</pagination-controls>
