@@ -72,7 +72,6 @@ export class EditarUsuarioComponent implements OnInit {
         this.ObtenerFgValidator.ciudad.setValue(datos.Ciudad);
         this.ObtenerFgValidator.rol.setValue(datos.Rol);
         this.ObtenerFgValidator.doc.setValue(datos.Documento);
-
       },
       (err) => {
         alert("No se encuentra el registro con id: " + id);
@@ -95,6 +94,15 @@ export class EditarUsuarioComponent implements OnInit {
 
     let modelo: UsuarioModelo = new UsuarioModelo();
 
+    
+    this.servicio.BuscarRegistros(this.route.snapshot.params["id"]).subscribe(
+      (datos) => {
+        modelo.Contrasena= datos.Contrasena
+      },
+      (err) => {
+        alert("No se encuentra el registro con id: " + this.route.snapshot.params["id"]);
+      }
+    );
     modelo.Nombre = nom;
     modelo.Apellido = ape;
     modelo.Correo = correo;
@@ -102,7 +110,7 @@ export class EditarUsuarioComponent implements OnInit {
     modelo.Ciudad = ciudad;
     modelo.Rol = rol;
     modelo.Documento = doc;
-    modelo.Id_usuario = this.route.snapshot.params["id"]
+    
     this.servicio.ModificarRegistro(modelo).subscribe(
       (datos) => {
         alert("Registro modificado correctamente");
