@@ -19,7 +19,7 @@ export class ClienteService {
   }
 
   ListarRegistros(): Observable<ClienteModelo[]>{
-    return this.http.get<ClienteModelo[]>(`${this.url}/clientes/?filter={"include":["ciudadCliente"]}`);
+    return this.http.get<ClienteModelo[]>(`${this.url}/clientes/?filter={"include":["ciudad","solicitud","infoFinanciera"]}`);
   }
 
   BuscarRegistros(Id_cliente: number): Observable<ClienteModelo>{
