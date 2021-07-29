@@ -1,1 +1,28 @@
-<h2>Bienvenido</h2>
+<div *ngIf="isLoggedIn" >
+
+    <div class="row">
+        <div *ngFor="let d of listaProyectos" class="col s4 m4">
+          <div class="card">
+            <div class="card-image">
+              <img class="responsive-img" src="{{urlBackend}}/archivo/2/{{d.Imagen}}">
+              <span class=" card-title ">{{d.Nombre}}</span>
+            </div>
+            <div class="card-content">
+              <p>{{d.Descripcion}}</p>
+            </div>
+            <div class="card-action">
+              <a  routerLink="/parametrizacion/proyecto-id/{{d.Id_proyecto}}">Ver Proyecto</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+</div>
+
+
+
+<div *ngIf="!isLoggedIn">
+    <h2>Bienvenido a Constructora UdeC , Por favor inicie sesion</h2>
+    <img class="responsive-img" src="../../../../assets/imagenes/constr.jpeg" >
+</div>

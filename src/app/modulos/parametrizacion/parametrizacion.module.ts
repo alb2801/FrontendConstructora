@@ -24,6 +24,7 @@ import { EliminarInmuebleComponent } from './inmueble/eliminar-inmueble/eliminar
 import { ListarInmuebleComponent } from './inmueble/listar-inmueble/listar-inmueble.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProyectoIdComponent } from './proyecto/proyecto-id/proyecto-id.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EditarInmuebleComponent,
     CrearInmuebleComponent,
     EliminarInmuebleComponent,
-    ListarInmuebleComponent
+    ListarInmuebleComponent,
+    ProyectoIdComponent
   ],
   imports: [
     CommonModule,

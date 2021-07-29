@@ -6,11 +6,11 @@
         <li *ngIf="isAdmin"><a routerLink="usuario/listar-usuario">Usuarios</a></li>
         <li *ngIf="isVende"><a routerLink="ventas/listar-infoFinan">Info-Finan</a></li>
         <li *ngIf="isVende"><a routerLink="ventas/listar-cliente">Cliente</a></li>
-        <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-paises">Paises</a></li>
-        <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-ciudades">Ciudades</a></li>
-        <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-proyectos">Proyectos</a></li>
-        <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-bloques">Bloques</a></li>
-        <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-inmuebles">Inmuebles</a></li>
+        <li *ngIf="isAdmin"><a routerLink="parametrizacion/listar-paises">Paises</a></li>
+        <li *ngIf="isAdmin"><a routerLink="parametrizacion/listar-ciudades">Ciudades</a></li>
+        <li *ngIf="isAdmin"><a routerLink="parametrizacion/listar-proyectos">Proyectos</a></li>
+        <li *ngIf="isAdmin"><a routerLink="parametrizacion/listar-bloques">Bloques</a></li>
+        <li *ngIf="isAdmin"><a routerLink="parametrizacion/listar-inmuebles">Inmuebles</a></li>
         <li *ngIf="isLoggedIn"><span class="flow-text">{{nombreCompleto}}</span></li>
         <li *ngIf="isLoggedIn"><a routerLink="seguridad/cambiar-clave">Cambiar Contraseña</a></li>
         <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
@@ -30,11 +30,11 @@
     <li *ngIf="isVende"><a routerLink="ventas/listar-cliente">Cliente</a></li>
     <hr>
     <li *ngIf="isAdmin"><a routerLink="usuario/listar-usuario">Usuarios</a></li>
-    <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-paises">Paises</a></li>
-    <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-ciudades">Ciudades</a></li>
-    <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-proyectos">Proyectos</a></li>
-    <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-bloques">Bloques</a></li>
-    <li *ngIf="isLoggedIn"><a routerLink="parametrizacion/listar-inmuebles">Inmuebles</a></li>
+    <li *ngIf="isAdmin"><a routerLink="parametrizacion/listar-paises">Paises</a></li>
+    <li *ngIf="isAdmin"><a routerLink="parametrizacion/listar-ciudades">Ciudades</a></li>
+    <li *ngIf="isAdmin"><a routerLink="parametrizacion/listar-proyectos">Proyectos</a></li>
+    <li *ngIf="isAdmin"><a routerLink="parametrizacion/listar-bloques">Bloques</a></li>
+    <li *ngIf="isAdmin"><a routerLink="parametrizacion/listar-inmuebles">Inmuebles</a></li>
     <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesion</a></li>
   </ul>
 
