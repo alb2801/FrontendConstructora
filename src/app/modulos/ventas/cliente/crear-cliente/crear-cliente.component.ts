@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DatosGenerales } from 'src/app/config/datos.generales';
 import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
 import { ClienteModelo } from 'src/app/modelos/cliente.modelo';
 import { CiudadService } from 'src/app/servicios/ciudad.service';
@@ -17,7 +18,8 @@ export class CrearClienteComponent implements OnInit {
 
   fgValidador: FormGroup = new FormGroup({});
   listaCiudades: CiudadModelo[] = [];
-  nombreImagenTemp?: String = "Sin imagen";
+  urlBackend: String = DatosGenerales.url;
+  
 
   constructor(private fb: FormBuilder,
     private Clienteservicio: ClienteService,
@@ -35,12 +37,12 @@ export class CrearClienteComponent implements OnInit {
       celular: ['', [Validators.required]],
       correo: ['', [Validators.required]],
       direccion: ['', [Validators.required]],
-      contrasena: ['', [Validators.required]],
       ciudad: ['', [Validators.required]]
     });
   }
 
   ngOnInit(): void {
+
     this.ConstruirFormulario();
     this.CiudadServicio.ListarRegistros().subscribe(
       (datos) =>{
@@ -69,21 +71,24 @@ export class CrearClienteComponent implements OnInit {
     let ciudad = this.ObtenerFgValidator.ciudad.value;
     let img = this.ObtenerFgValidator.nombreImagen.value;
     let modelo: ClienteModelo = new ClienteModelo();
-    modelo.Documento = doc;
+    console.log("modelo");
+    
+    modelo.Documento = parseInt(doc);
     modelo.Nombre = nom;
     modelo.Apellido = apl;
     modelo.Fecha_nacimiento = fen;
-    modelo.Celular = cel;
+    modelo.Celular = parseInt(cel);
     modelo.Correo_electronico = corr;
     modelo.Direccion = drc;
     modelo.ciudadId = parseInt(ciudad);
     modelo.Fotografia = img;
     console.log(modelo.Fotografia)
+    
 
     this.Clienteservicio.AlmacenarRegistro(modelo).subscribe(
       (datos) => {
         alert("Registro almacenado correctamente");
-        this.router.navigate(["/parametrizacion/listar-proyectos"])
+        this.router.navigate(["/ventas/listar-cliente"])
       },
       (err) => {
         alert("Error almacenando el registro");
@@ -105,7 +110,6 @@ export class CrearClienteComponent implements OnInit {
     formData.append('file', this.fgValidador.controls.imagen.value);
     this.Clienteservicio.CargarArchivo(formData).subscribe(
       (datos) =>{
-        this.nombreImagenTemp = datos.filename;
         this.fgValidador.controls.nombreImagen.setValue(datos.filename);
       },
       (error) => {

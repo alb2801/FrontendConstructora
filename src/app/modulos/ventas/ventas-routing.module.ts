@@ -20,7 +20,7 @@ const routes: Routes = [
     canActivate: [ValidadorSesionGuard]
   },
   {
-    path: 'editar-cliente',
+    path: 'editar-cliente/:id',
     component: EditarClienteComponent,
     canActivate: [ValidadorSesionGuard]
   },
@@ -35,7 +35,7 @@ const routes: Routes = [
     canActivate: [ValidadorSesionGuard]
   },
   {
-    path: 'editar-infoFinan',
+    path: 'editar-infoFinan/:id',
     component: EditarInfofinancieraComponent,
     canActivate: [ValidadorSesionGuard]
   }

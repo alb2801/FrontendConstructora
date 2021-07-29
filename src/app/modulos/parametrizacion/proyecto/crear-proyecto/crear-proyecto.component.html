@@ -11,6 +11,9 @@
                 <label for="nombre">Descripcion</label>
             </div>
             <div class="file-field input-field col s9">
+                <div>
+                    <img class="thumbnail" src="{{urlBackend}}/archivo/2/{{ObtenerFgValidator.nombreImagen.value}}" />
+                </div>
               <div class="btn">
                 <span>Seleccionar Imagen</span>
                 <input formControlName="imagen" (change)="CuandoSeleccionanArchivo($event)" type="file">

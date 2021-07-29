@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from '../config/datos.generales';
 import { ClienteModelo } from '../modelos/cliente.modelo';
+import { ImagenClienteModelo } from '../modelos/imagen.cliente.modelo';
 import { ImagenProyectoModelo } from '../modelos/imagen.proyecto.modelo';
 import { SeguridadService } from './seguridad.service';
 
@@ -38,10 +39,7 @@ export class ClienteService {
         Celular: modelo.Celular,
         Correo_electronico: modelo.Correo_electronico,
         Direccion: modelo.Direccion,
-        Contrasena: modelo.Contrasena,
-        ciudadId: modelo.ciudadId,
-        solicitudId: modelo.solicitudId,
-        infoFinancieraId: modelo.infoFinancieraId
+        ciudadId: modelo.ciudadId
       },
       {
         headers: new HttpHeaders({
@@ -62,10 +60,7 @@ export class ClienteService {
         Celular: modelo.Celular,
         Correo_electronico: modelo.Correo_electronico,
         Direccion: modelo.Direccion,
-        Contrasena: modelo.Contrasena,
-        ciudadId: modelo.ciudadId,
-        solicitudId: modelo.solicitudId,
-        infoFinancieraId: modelo.infoFinancieraId
+        ciudadId: modelo.ciudadId
       },
       {
         headers: new HttpHeaders({
@@ -84,9 +79,9 @@ export class ClienteService {
       });
   }
 
-  CargarArchivo(formData: FormData): Observable<ImagenProyectoModelo> {
-    return this.http.post<ImagenProyectoModelo>(
-      `${this.url}/CargarImagenProyecto`,
+  CargarArchivo(formData: FormData): Observable<ImagenClienteModelo> {
+    return this.http.post<ImagenClienteModelo>(
+      `${this.url}/CargarImagenCliente`,
       formData,
       {
         headers: new HttpHeaders({

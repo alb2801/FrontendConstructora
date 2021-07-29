@@ -10,5 +10,5 @@ export class InfoFinacieraModelo{
     Nombre_ref_personal?: String;
     Telefono_ref_personal?: number;
     clienteId?: number;
-    infoFinaCliente: ClienteModelo = new ClienteModelo;
+    //infoFinaCliente?: ClienteModelo = new ClienteModelo;
 }
