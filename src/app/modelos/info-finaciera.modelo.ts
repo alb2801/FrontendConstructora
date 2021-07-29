@@ -1,3 +1,5 @@
+import { ClienteModelo } from "./cliente.modelo";
+
 export class InfoFinacieraModelo{
     Id_financiera?: number;
     Total_ingresos?: number;
@@ -7,4 +9,6 @@ export class InfoFinacieraModelo{
     Telefono_ref_familiar?: number;
     Nombre_ref_personal?: String;
     Telefono_ref_personal?: number;
+    clienteId?: number;
+    infoFinaCliente: ClienteModelo = new ClienteModelo;
 }

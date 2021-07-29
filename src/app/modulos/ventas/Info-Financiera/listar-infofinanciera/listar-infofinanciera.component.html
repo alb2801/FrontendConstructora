@@ -1,0 +1,79 @@
+<br>
+<a class="waves-effect waves-light btn" routerLink="/ventas/crear-infoFinan"><i class="material-icons left">add</i>Agregar</a>
+
+<table class="table responsive-table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Total ingresos
+            </th>
+            <th>
+                Datos trabajo
+            </th>
+            <th>
+                Tiempo trab actual
+            </th>
+            <th>
+                Nombre ref familiar
+            </th>
+            <th>
+                Telefono ref familiar
+            </th>
+            <th>
+                Nombre ref personal
+            </th>
+            <th>
+                Telefono ref personal
+            </th>
+            <th>
+                Cliente
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let r of listarRegistros | paginate: { itemsPerPage: regPorPagina, currentPage: pagina }">
+            <th>
+                {{r.Id_financiera}}
+            </th>
+            <th>
+                {{r.Total_ingresos}}
+            </th>
+            <th>
+                {{r.Datos_trabajo}}
+            </th>
+            <th>
+                {{r.Tiempo_trab_actual}}
+            </th>
+            <th>
+                {{r.Nombre_ref_familiar}}
+            </th>
+            <th>
+                {{r.Telefono_ref_familiar}}
+            </th>
+            <th>
+                {{r.Nombre_ref_personal}}
+            </th>
+            <th>
+                {{r.Telefono_ref_personal}}
+            </th>
+            <th>
+                {{r.infoFinaCliente.Nombre}}
+            </th>
+            <th>
+                <a class="waves-effect orange waves-light btn" routerLink="/ventas/editar-infoFinan/{{r.Id_financiera}}"><i class="material-icons left">edit</i>Modificar</a>
+
+            </th>
+        </tr>
+    </tbody>
+</table>
+
+<pagination-controls  (pageChange)="CambioPagina($event)"
+                      previousLabel="Anterior"
+                      nextLabel="Siguiente">
+</pagination-controls>
