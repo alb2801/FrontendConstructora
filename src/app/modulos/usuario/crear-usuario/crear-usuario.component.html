@@ -22,12 +22,17 @@
                 <label for="correo">Correo</label>
             </div>
             <div class="input-field col s6">
-                <input formControlName="correo" id="correo" type="text" class="validate">
-                <label for="correo">Ciudad</label>
+                <select formControlName="ciudad">
+                    <option *ngFor="let c of listaCiudades" value="{{c.Nombre}}">{{c.Nombre}}</option>
+                </select>
+                <label>Ciudades</label>
             </div>
             <div class="input-field col s6">
-                <input formControlName="correo" id="correo" type="text" class="validate">
-                <label for="correo">Rol</label>
+                <select formControlName="rol">
+                    <option value="vendedor">vendedor</option>
+                    <option value="administrador">administrador</option>
+                </select>
+                <label for="rol">Rol</label>
             </div>
         </div>
         <div class="row">
