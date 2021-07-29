@@ -14,10 +14,10 @@ export class ClienteModelo{
     Direccion?: String;
     Contrasena?: String;
     ciudadId?: number;
-    ciudadCliente: CiudadModelo = new CiudadModelo();
+    ciudad: CiudadModelo = new CiudadModelo();
     solicitudId?: number;
-    solicitudCliente: SolicitudModelo = new SolicitudModelo();
+    solicitud: SolicitudModelo = new SolicitudModelo();
     infoFinancieraId?: number;
-    infoFinancieraCliente: InfoFinacieraModelo = new InfoFinacieraModelo();
+    infoFinanciera: InfoFinacieraModelo = new InfoFinacieraModelo();
     
 }
