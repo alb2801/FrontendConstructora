@@ -13,6 +13,7 @@ import { EditarInfofinancieraComponent } from './Info-Financiera/editar-infofina
 import { ListarClienteComponent } from './cliente/listar-cliente/listar-cliente.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListarInfofinancieraComponent } from './Info-Financiera/listar-infofinanciera/listar-infofinanciera.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CrearInfofinancieraComponent,
     EditarInfofinancieraComponent,
     ListarClienteComponent,
+    ListarInfofinancieraComponent,
   ],
   imports: [
     CommonModule,
