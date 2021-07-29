@@ -6,7 +6,7 @@ import { ClienteService } from 'src/app/servicios/cliente-service.service';
 @Component({
   selector: 'app-listar-cliente',
   templateUrl: './listar-cliente.component.html',
-  styleUrls: ['./listar-cliente.component.css']
+  styleUrls: ['./listar-cliente.component.css'] 
 })
 export class ListarClienteComponent implements OnInit {
   pagina: number = 1;
