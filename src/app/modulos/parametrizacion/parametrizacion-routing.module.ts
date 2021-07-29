@@ -21,6 +21,7 @@ import { CrearProyectoComponent } from './proyecto/crear-proyecto/crear-proyecto
 import { EditarProyectoComponent } from './proyecto/editar-proyecto/editar-proyecto.component';
 import { EliminarProyectoComponent } from './proyecto/eliminar-proyecto/eliminar-proyecto.component';
 import { ListarProyectoComponent } from './proyecto/listar-proyecto/listar-proyecto.component';
+import { ProyectoIdComponent } from './proyecto/proyecto-id/proyecto-id.component';
 
 const routes: Routes = [
   {
@@ -122,6 +123,10 @@ const routes: Routes = [
     path: 'eliminar-inmuebles/:id',
     component: EliminarInmuebleComponent,
     canActivate: [ValidadorSesionGuard]
+  },
+  {
+    path: 'proyecto-id/:id',
+    component: ProyectoIdComponent 
   }
 ];
 
