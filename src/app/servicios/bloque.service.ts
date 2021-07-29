@@ -18,7 +18,7 @@ export class BloqueService {
   }
 
   ListarRegistros(): Observable<BloqueModelo[]>{
-    return this.http.get<BloqueModelo[]>(`${this.url}/bloques/?filter={"include":["proyectoBloque"]}`);
+    return this.http.get<BloqueModelo[]>(`${this.url}/bloques/?filter={"include":["proyecto"]}`);
   }
 
   BuscarRegistros(Id: number): Observable<BloqueModelo>{
@@ -34,7 +34,8 @@ export class BloqueService {
       `${this.url}/bloques`,
       {
         Nombre: modelo.Nombre,
-        pais: modelo.Descripcion
+        Descripcion:modelo.Descripcion,
+        proyectoId: modelo.proyectoId
       },
       {
         headers: new HttpHeaders({
@@ -48,7 +49,8 @@ export class BloqueService {
       `${this.url}/bloques/${modelo.Id_bloque}`,
       {
         Nombre: modelo.Nombre,
-        pais: modelo.Descripcion
+        Descripcion:modelo.Descripcion,
+        proyectoId: modelo.proyectoId
       },
       {
         headers: new HttpHeaders({

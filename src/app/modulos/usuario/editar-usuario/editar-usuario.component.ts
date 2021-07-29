@@ -89,7 +89,7 @@ export class EditarUsuarioComponent implements OnInit {
     this.servicio.ModificarRegistro(modelo).subscribe(
       (datos) => {
         alert("Registro modificado correctamente");
-        this.router.navigate(["/parametrizacion/listar-paises"])
+        this.router.navigate(["/usuarios/listar-usuarios"])
       },
       (err) => {
         alert("Error modificando el registro");

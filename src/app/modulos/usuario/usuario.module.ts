@@ -8,7 +8,7 @@ import { ListarUsuarioComponent } from './listar-usuario/listar-usuario.componen
 import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 import { EliminarUsuarioComponent } from './eliminar-usuario/eliminar-usuario.component';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.componen
   imports: [
     CommonModule,
     UsuarioRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class UsuarioModule { }

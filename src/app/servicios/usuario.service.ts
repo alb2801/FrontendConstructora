@@ -43,7 +43,6 @@ export class UsuarioService {
         Correo: modelo.Correo,
         Celular: modelo.Celular,
         Ciudad: modelo.Ciudad,
-        Contrasena: modelo.Contrasena,
         Rol: modelo.Rol
       },
       {
